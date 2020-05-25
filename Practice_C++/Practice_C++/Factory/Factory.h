@@ -1,48 +1,101 @@
+#pragma once
 #include "Component.h"
 
+class Creator
+{
+private:
+	static Creator* creator;
 
-class Factory
+	static void MakeCreator()
+	{
+		std::cout << "make Creator" << std::endl;
+		creator = new Creator;
+	}
+
+public:
+	static Tribe* MakeTribe(std::string _sType)
+	{
+		if (!creator)
+			MakeCreator();
+
+		if (_sType == "Terran")
+			return new Terran;
+		else if (_sType == "Protoss")
+			return new Protoss;
+		else
+		{
+			std::cout << "make nothing" << std::endl;
+			return NULL;
+		}
+	}
+};
+
+class Tribe
 {
 public:
-	Factory();
-
+	Tribe()
+	{
+		std::cout << "Basic Factory" << std::endl;
+	}
+	~Tribe()
+	{
+		std::cout<<"~Basic Factory" << std::endl;
+	}
 	virtual Unit* MakeUnit() const
 	{
+		std::cout << "Basic Factory MakeUnit" << std::endl;
 		return new Unit;
 	}
 
 	virtual Building* MakeBuilding() const
 	{
+		std::cout << "Basic Factory MakeBuilding" << std::endl;
 		return new Building;
 	}
 };
 
-class TerranFactory : public Factory
+class Terran : public Tribe
 {
 public:
-	TerranFactory();
-
+	Terran()
+	{
+		std::cout << "Terran Factory" << std::endl;
+	}
+	~Terran()
+	{
+		std::cout << "~Terran Factory" << std::endl;
+	}
 	virtual Unit* MakeUnit() const
 	{
+		std::cout << "Terran Factory MakeUnit" << std::endl;
 		return new TerranUnit;
 	}
 	virtual Building* MakeBuilding() const
 	{
+		std::cout << "Terran Factory MakeBuilding" << std::endl;
 		return new TerranBuilding;
 	}
 };
 
-class ProtossFactory : public Factory
+class Protoss : public Tribe
 {
 public:
-	ProtossFactory();
-
+	Protoss()
+	{
+		std::cout << "Protoss Factory" << std::endl;
+	}
+	~Protoss()
+	{
+		std::cout << "~Protoss Factory" << std::endl;
+	}
 	virtual Unit* MakeUnit() const
 	{
+		std::cout << "Protoss Factory MakeUnit" << std::endl;
 		return new ProtossUnit;
 	}
 	virtual Building* MakeBuilding() const
 	{
+		std::cout << "Protoss Factory MakeBuilding" << std::endl;
 		return new ProtossBuilding;
 	}
 };
