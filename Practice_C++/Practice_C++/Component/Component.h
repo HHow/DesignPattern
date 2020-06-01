@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 enum eStaminaType
 {
@@ -7,6 +8,16 @@ enum eStaminaType
 	eBlood,
 	eShield,
 	eReroll
+};
+
+class UnitGroup
+{
+public:
+	UnitGroup() {}
+	virtual ~UnitGroup() {}
+	virtual void GetPower() = 0;
+	virtual void AddUnion(UnitGroup* _UnitGroup) = 0;
+	virtual void SubUnion() = 0;
 };
 
 class CombineUnit
@@ -28,7 +39,7 @@ public:
 	}
 };
 
-class Unit
+class Unit : public UnitGroup
 {
 public:
 	std::string sUnitName;
@@ -47,6 +58,28 @@ public:
 	{
 		return;
 	}
+
+	virtual void GetPower()
+	{
+		int power = 0;
+		for (int i = 0; i < vtUnitGroup.size(); i++)
+		{
+			power += vtUnitGroup[i].GetPower();
+		}
+	}
+
+	virtual void AddUnion(UnitGroup* _UnitGroup)
+	{
+		vtUnitGroup.push_back(_UnitGroup);
+	}
+
+	virtual void SubUnion()
+	{
+		vtUnitGroup.pop_back();
+	}
+
+private:
+	std::vector<UnitGroup*> vtUnitGroup;
 };
 
 class TerranUnit : public Unit, public CombineUnit
@@ -95,7 +128,7 @@ public:
 	}
 };
 
-class Building
+class Building : public UnitGroup
 {
 
 };
