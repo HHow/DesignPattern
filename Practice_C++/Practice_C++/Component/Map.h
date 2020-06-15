@@ -21,13 +21,12 @@ public:
 class CRock : public CComponent
 {
 public:
-	void Draw() 
+	void Draw()
 	{
 		std::cout << "make Rock" << std::endl;
 	}
 };
 
-//동적모형 객체
 class CCompositeForm : public CComponent
 {
 public:
@@ -53,4 +52,57 @@ private:
 	std::vector<CComponent*> _components;
 };
 
+class CDecorator : public CComponent
+{
+public:
+	CDecorator(CComponent* _component) : pComponent(_component){}
+	~CDecorator()
+	{
+		if (pComponent)
+			delete pComponent;
+	}
+	virtual void Draw()
+	{
+		if (pComponent)
+			pComponent->Draw();
+	}
 
+private:
+	CComponent* pComponent;
+};
+
+class CTriangleDecorator : public CDecorator
+{
+public:
+	CTriangleDecorator(CComponent* _component) : CDecorator(_component) {}
+	
+	virtual void Draw()
+	{
+		CDecorator::Draw();
+		TriangleDraw();
+	}
+
+private:
+	void TriangleDraw()
+	{
+		std::cout << "make Decorator Triangle" << std::endl;
+	}
+};
+
+class CCircleDecorator : public CDecorator
+{
+public:
+	CCircleDecorator(CComponent* _component) : CDecorator(_component) {}
+
+	virtual void Draw()
+	{
+		CDecorator::Draw();
+		CircleDraw();
+	}
+
+private:
+	void CircleDraw()
+	{
+		std::cout << "make Decorator Circle" << std::endl;
+	}
+};
