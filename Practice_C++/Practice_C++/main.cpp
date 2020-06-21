@@ -26,6 +26,12 @@ int main(void)
 
 	}
 
+	// Load basic map
+	CLoad* LoadMapProxy = new CLoadMapProxy();
+	LoadMapProxy->DrawHoleMap();
+
+	
+	return 0;
 	// make map
 	CComponent* pRockComponent = new CCircleDecorator(new CTriangleDecorator(new CDecorator(new CRock())));
 	CComponent* pMountainComponent = new CTriangleDecorator(new CCircleDecorator(new CDecorator(new CMountain())));
@@ -36,6 +42,7 @@ int main(void)
 	CompositeMap.Draw();
 
 	delete MyTribe;
+	delete LoadMapProxy;
 
 	return 0;
 }

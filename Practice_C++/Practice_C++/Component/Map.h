@@ -48,7 +48,7 @@ public:
 		_components.pop_back();
 	}
 
-private:
+private: 
 	std::vector<CComponent*> _components;
 };
 
@@ -105,4 +105,32 @@ private:
 	{
 		std::cout << "make Decorator Circle" << std::endl;
 	}
+};
+
+class CLoad {
+public:
+	virtual void DrawHoleMap() = 0;
+};
+
+class CLoadMap : public CLoad {
+public:
+	void DrawHoleMap()
+	{
+		std::cout << "Load map start" << std::endl;
+	}
+};
+
+class CLoadMapProxy : public CLoad {
+public:
+	CLoadMapProxy() :LoadMap(NULL) {}
+	~CLoadMapProxy() { if (LoadMap) delete LoadMap; }
+
+	void DrawHoleMap() {
+		if (!LoadMap)
+			LoadMap = new CLoadMap;
+
+		LoadMap->DrawHoleMap();
+	}
+private:
+	CLoadMap* LoadMap;
 };
