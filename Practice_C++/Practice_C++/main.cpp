@@ -7,7 +7,10 @@
 
 int main(void)
 {
-	Tribe* MyTribe = NULL;
+	// Load basic map
+	CLoad* LoadMapProxy = new CLoadMapProxy();
+	
+	
 
 	std::string input;
 	// make unit
@@ -15,34 +18,51 @@ int main(void)
 	{
 		std::cout << "Input 'Terran' or 'Protoss'";
 		std::cin >> input;
-		MyTribe = Creator::MakeTribe(input);
-
-		if (MyTribe)
+		CFacade userFacade(input);
+		LoadMapProxy->DrawBasicMap();
+		if (userFacade.MyTribe)
 		{
-			/**/
+			Unit *unit = userFacade.MyTribe->MakeUnit();
 
 
 		}
+		else
+			continue;
 
+		// make map
+		CComponent* pRockComponent = new CCircleDecorator(new CTriangleDecorator(new CDecorator(new CRock())));
+		CComponent* pMountainComponent = new CTriangleDecorator(new CCircleDecorator(new CDecorator(new CMountain())));
+
+		userFacade.AddComponent(pRockComponent);
+		userFacade.AddComponent(pMountainComponent);
+		userFacade.Draw();
+
+		delete LoadMapProxy;
 	}
-
-	// Load basic map
-	CLoad* LoadMapProxy = new CLoadMapProxy();
-	LoadMapProxy->DrawHoleMap();
-
-	
-	return 0;
-	// make map
-	CComponent* pRockComponent = new CCircleDecorator(new CTriangleDecorator(new CDecorator(new CRock())));
-	CComponent* pMountainComponent = new CTriangleDecorator(new CCircleDecorator(new CDecorator(new CMountain())));
-
-	CCompositeForm CompositeMap;
-	CompositeMap.AddComponent(pRockComponent);
-	CompositeMap.AddComponent(pMountainComponent);
-	CompositeMap.Draw();
-
-	delete MyTribe;
-	delete LoadMapProxy;
-
 	return 0;
 }
+
+class CFacade
+{
+public:
+	CFacade(std::string _strType)
+	{
+		MyTribe = Creator::MakeTribe(_strType);
+	}
+	~CFacade()
+	{
+		if (MyTribe)
+			delete MyTribe;
+	}
+	void AddComponent(CComponent* _component)
+	{
+		CompositeMap.AddComponent(_component);
+	}
+	void Draw()
+	{
+		CompositeMap.Draw();
+	}
+
+	Tribe* MyTribe = NULL;
+	CCompositeForm CompositeMap;
+};

@@ -109,12 +109,12 @@ private:
 
 class CLoad {
 public:
-	virtual void DrawHoleMap() = 0;
+	virtual void DrawBasicMap() = 0;
 };
 
 class CLoadMap : public CLoad {
 public:
-	void DrawHoleMap()
+	void DrawBasicMap()
 	{
 		std::cout << "Load map start" << std::endl;
 	}
@@ -123,13 +123,20 @@ public:
 class CLoadMapProxy : public CLoad {
 public:
 	CLoadMapProxy() :LoadMap(NULL) {}
-	~CLoadMapProxy() { if (LoadMap) delete LoadMap; }
+	~CLoadMapProxy() 
+	{ 
+		if (LoadMap) 
+			delete LoadMap; 
+	}
 
-	void DrawHoleMap() {
+	void DrawBasicMap()
+	{
 		if (!LoadMap)
+		{
 			LoadMap = new CLoadMap;
-
-		LoadMap->DrawHoleMap();
+			std::cout << "Load map~" << std::endl;
+		}
+		LoadMap->DrawBasicMap();
 	}
 private:
 	CLoadMap* LoadMap;
