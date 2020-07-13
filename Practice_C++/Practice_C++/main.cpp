@@ -8,24 +8,36 @@
 
 int main(void)
 {
+	// 채팅 관리용 factory로 하면 좋을듯
+	CMetiator* ChatMetiator = new CChatMetiator();
+
 	// Load basic map
 	CLoad* LoadMapProxy = new CLoadMapProxy();
-	
-	std::string UserName, InputTribe;
-	// make unit
-	while (1)
+	std::vector<CFacade*> vtUser;
+	// 4인용 게임
+	for(int i=0;i<4;i++)
 	{
+		std::string UserName, InputTribe;
 		std::cout << "Input your name" << std::endl;
 		std::cin >> UserName;
 		std::cout << "Input 'Terran' or 'Protoss'" << std::endl;
 		std::cin >> InputTribe;
-		CFacade userFacade(UserName, InputTribe);
-		LoadMapProxy->DrawBasicMap();
-		if (userFacade.MyTribe)
+		CFacade* userFacade = new CFacade(UserName, InputTribe);
+		vtUser.push_back(userFacade);
+		ChatMetiator->AddClient(userFacade);
+	}
+
+	// 기본 맵 생성
+	LoadMapProxy->DrawBasicMap();
+
+	// 유저들 기본세팅
+	for(int i=0; i<4; i++)
+	{
+		if (vtUser[i]->GetTribe())
 		{
-			Unit *unit = userFacade.MyTribe->MakeUnit();
+			Unit *unit = vtUser[i]->GetTribe()->MakeUnit();
 
-
+			// 유닛 생성
 		}
 		else
 			continue;
@@ -34,16 +46,18 @@ int main(void)
 		CComponent* pRockComponent = new CCircleDecorator(new CTriangleDecorator(new CDecorator(new CRock())));
 		CComponent* pMountainComponent = new CTriangleDecorator(new CCircleDecorator(new CDecorator(new CMountain())));
 
-		userFacade.AddComponent(pRockComponent);
-		userFacade.AddComponent(pMountainComponent);
-		userFacade.Draw();
-
-		userFacade.DoingChat("너 정말 바보같이 못하구나");
-		userFacade.DoingChat("너 주소 어디야");
-		userFacade.DoingChat("좋은 게임이였습니다^^");
-
-		delete LoadMapProxy;
+		vtUser[i]->AddComponent(pRockComponent);
+		vtUser[i]->AddComponent(pMountainComponent);
+		vtUser[i]->Draw();
 	}
+
+	// 발언권 한번씩만 부여
+	for (int i = 0; i < 4; i++)
+	{
+		ChatMetiator->Chating(vtUser[i], "너흰 바보야");
+	}
+
+	delete LoadMapProxy;
 	return 0;
 }
 
@@ -76,7 +90,7 @@ public:
 		CompositeMap.Draw();
 	}
 
-	void DoingChat(std::string _strInputWord)
+	std::string DoingChat(std::string _strInputWord)
 	{
 		for (int i = 0; i < vtActList.size(); i++)
 		{
@@ -85,9 +99,18 @@ public:
 				return;
 			}
 		}
-		std::cout << _strInputWord << std::endl;
+		return _strInputWord;
 	}
 
+	CActUser* GetActUser()
+	{
+		return ActingUser;
+	}
+	Tribe* GetTribe()
+	{
+		return MyTribe;
+	}
+private:
 	Tribe* MyTribe = NULL;
 	CCompositeForm CompositeMap;
 	CActUser* ActingUser = NULL;
