@@ -1,35 +1,6 @@
 #pragma once
 #include "../Component/Component.h"
 
-class Creator
-{
-private:
-	static Creator* creator;
-
-	static void MakeCreator()
-	{
-		std::cout << "make Creator" << std::endl;
-		creator = new Creator;
-	}
-
-public:
-	static Tribe* MakeTribe(std::string _sType)
-	{
-		if (!creator)
-			MakeCreator();
-
-		if (_sType == "Terran")
-			return new Terran;
-		else if (_sType == "Protoss")
-			return new Protoss;
-		else
-		{
-			std::cout << "make nothing" << std::endl;
-			return NULL;
-		}
-	}
-};
-
 class Tribe
 {
 public:
@@ -97,5 +68,34 @@ public:
 	{
 		std::cout << "Protoss Factory MakeBuilding" << std::endl;
 		return new ProtossBuilding;
+	}
+};
+
+class Creator
+{
+private:
+	static Creator* creator;
+
+	static void MakeCreator()
+	{
+		std::cout << "make Creator" << std::endl;
+		creator = new Creator;
+	}
+
+public:
+	static Tribe* MakeTribe(std::string _sType)
+	{
+		if (!creator)
+			MakeCreator();
+
+		if (_sType == "Terran")
+			return new Terran;
+		else if (_sType == "Protoss")
+			return new Protoss;
+		else
+		{
+			std::cout << "make nothing" << std::endl;
+			return NULL;
+		}
 	}
 };

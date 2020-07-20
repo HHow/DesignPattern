@@ -1,15 +1,19 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <thread>
 #include "Factory/Factory.h"
 #include "Component/Component.h"
 #include "Component/Map.h"
 #include "Component/Activity.h"
+#include "Component/Facade.h"
 
 int main(void)
 {
 	// 채팅 관리용 factory로 하면 좋을듯
 	CMetiator* ChatMetiator = new CChatMetiator();
+
+	CSubject* StatusSubject = new CStatusSubject();
 
 	// Load basic map
 	CLoad* LoadMapProxy = new CLoadMapProxy();
@@ -25,6 +29,7 @@ int main(void)
 		CFacade* userFacade = new CFacade(UserName, InputTribe);
 		vtUser.push_back(userFacade);
 		ChatMetiator->AddClient(userFacade);
+		StatusSubject->AddObserver(userFacade);
 	}
 
 	// 기본 맵 생성
@@ -50,6 +55,8 @@ int main(void)
 		vtUser[i]->AddComponent(pMountainComponent);
 		vtUser[i]->Draw();
 	}
+	// 유저 상태 계속 업데이트
+	std::thread th(StatusSubject->StatusUpdating, "StatusUpdate");
 
 	// 발언권 한번씩만 부여
 	for (int i = 0; i < 4; i++)
@@ -57,62 +64,15 @@ int main(void)
 		ChatMetiator->Chating(vtUser[i], "너흰 바보야");
 	}
 
+
+	while (1)
+	{
+		// 게임공간
+
+	}
+
+
+	th.join();
 	delete LoadMapProxy;
 	return 0;
 }
-
-class CFacade
-{
-public:
-	CFacade(std::string _strUserName, std::string _strType)
-	{
-		ActingUser = new CActUser(_strUserName);
-		MyTribe = Creator::MakeTribe(_strType);
-		vtActList.push_back(new CSwearExpression());
-		vtActList.push_back(new CPrivacyExpression());
-	}
-	~CFacade()
-	{
-		if (MyTribe)
-			delete MyTribe;
-		if (ActingUser)
-			delete ActingUser;
-
-		for (CAbstractExpression* Expression : vtActList)
-			delete Expression;
-	}
-	void AddComponent(CComponent* _component)
-	{
-		CompositeMap.AddComponent(_component);
-	}
-	void Draw()
-	{
-		CompositeMap.Draw();
-	}
-
-	std::string DoingChat(std::string _strInputWord)
-	{
-		for (int i = 0; i < vtActList.size(); i++)
-		{
-			if (false == vtActList[i]->CheckWord(_strInputWord))
-			{
-				return;
-			}
-		}
-		return _strInputWord;
-	}
-
-	CActUser* GetActUser()
-	{
-		return ActingUser;
-	}
-	Tribe* GetTribe()
-	{
-		return MyTribe;
-	}
-private:
-	Tribe* MyTribe = NULL;
-	CCompositeForm CompositeMap;
-	CActUser* ActingUser = NULL;
-	std::vector<CAbstractExpression*> vtActList;
-};

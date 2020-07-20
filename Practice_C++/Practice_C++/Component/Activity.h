@@ -1,26 +1,31 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <windows.h>
+#include <vector>
+
+class CFacade;
 
 class CActUser
 {
 public:
-	CActUser(std::string _stUserName) : stUserName(_stUserName) {}
-
-	std::string GetUserName()
+	CActUser(std::string _stUserName) : stUserName(_stUserName)
 	{
-		return stUserName;
+		KillUserCount = 0;
+		stTitle = std::string();
 	}
 
-	void ReceiveMessage(std::string _message)
-	{
-		std::cout << _message << std::endl;
-	}
+	std::string GetUserName();
+	void ReceiveMessage(std::string _message);
+	void PlusKillCount();
+	void Update();
 
 private:
 	std::string stUserName;
-};
+	std::string stTitle;
+	int KillUserCount;
 
+};
 
 class CAbstractExpression
 {
@@ -31,35 +36,13 @@ public:
 class CSwearExpression : public CAbstractExpression
 {
 public:
-	virtual bool CheckWord(std::string _strInputWord)
-	{
-		if (_strInputWord.find("ㅗ") >= 0)
-			std::cout << "건전한 소환사는 착해요" << std::endl;
-		else if (_strInputWord.find("바보") >= 0)
-			std::cout << "건전한 소환사는 착해요" << std::endl;
-		else if (_strInputWord.find("멍청이") >= 0)
-			std::cout << "건전한 소환사는 착해요" << std::endl;
-		else
-			return true;
-		return false;
-	}
+	virtual bool CheckWord(std::string _strInputWord);
 };
 
 class CPrivacyExpression : public CAbstractExpression
 {
 public:
-	virtual bool CheckWord(std::string _strInputWord)
-	{
-		if (_strInputWord.find("계좌") >= 0)
-			std::cout << "건전한 소환사는 개인정보를 말하지 않아요" << std::endl;
-		else if (_strInputWord.find("전화") >= 0)
-			std::cout << "건전한 소환사는 개인정보를 말하지 않아요" << std::endl;
-		else if (_strInputWord.find("주소") >= 0)
-			std::cout << "건전한 소환사는 개인정보를 말하지 않아요" << std::endl;
-		else
-			return true;
-		return false;
-	}
+	virtual bool CheckWord(std::string _strInputWord);
 };
 
 class CMetiator
@@ -73,31 +56,37 @@ public:
 class CChatMetiator : public CMetiator
 {
 public:
-	virtual ~CChatMetiator()
-	{
-		for (CFacade* User : vtUsers)
-			delete User;
-	}
+	virtual ~CChatMetiator();
 
-public:
-	virtual void AddClient(CFacade* _CFacade)
-	{
-		vtUsers.push_back(_CFacade);
-	}
-	virtual void Chating(CFacade* _User, std::string _message)
-	{
-		for (int i = 0; i < vtUsers.size(); i++)
-		{
-			if (_User->GetActUser()->GetUserName() != vtUsers[i]->GetActUser()->GetUserName())
-			{
-				std::string strUsername = _User->GetActUser()->GetUserName();
-				std::string strUserSendMessage = _User->DoingChat(_message);
-				vtUsers[i]->GetActUser()->ReceiveMessage(strUsername + "님 : " + strUserSendMessage);
-			}
-		}
-	}
+	virtual void AddClient(CFacade* _CFacade);
+	virtual void Chating(CFacade* _User, std::string _message);
 
 private:
 	std::vector<CFacade*> vtUsers;
 };
 
+class CSubject
+{
+public:
+	CSubject() {}
+	~CSubject() {}
+	void AddObserver(CFacade* _CFacade);
+	void DeleteObserver(CFacade* _CFacade);
+
+	virtual void StatusUpdating(std::string strThreadName) = 0;
+
+protected:
+	void Notify();
+
+private:
+	std::vector<CFacade*> vtUsers;
+};
+
+class CStatusSubject : public CSubject
+{
+public:
+	CStatusSubject() {}
+	~CStatusSubject() {}
+
+	virtual void StatusUpdating(std::string strThreadName);
+};
