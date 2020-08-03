@@ -106,7 +106,7 @@ void CSubject::Notify()
 }
 
 
-void CStatusSubject::StatusUpdating(std::string strThreadName)
+void CStatusSubject::StatusUpdating()
 {
 	// √ ¥‹¿ß
 	int StartTime = timeGetTime() / 1000;

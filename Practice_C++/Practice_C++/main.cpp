@@ -8,6 +8,8 @@
 #include "Component/Activity.h"
 #include "Component/Facade.h"
 
+
+
 int main(void)
 {
 	// 채팅 관리용 factory로 하면 좋을듯
@@ -56,7 +58,11 @@ int main(void)
 		vtUser[i]->Draw();
 	}
 	// 유저 상태 계속 업데이트
-	std::thread th(StatusSubject->StatusUpdating, "StatusUpdate");
+//	std::thread threadStatus = std::thread{ &CSubject::StatusUpdating, &StatusSubject };
+//	std::thread threadStatus = std::thread(StatusSubject->StatusUpdating);
+	std::thread threadStatus([&](CSubject* _StatusSubject) { _StatusSubject->StatusUpdating(); }, &StatusSubject);
+
+
 
 	// 발언권 한번씩만 부여
 	for (int i = 0; i < 4; i++)
@@ -72,7 +78,7 @@ int main(void)
 	}
 
 
-	th.join();
+	threadStatus.join();
 	delete LoadMapProxy;
 	return 0;
 }

@@ -3,6 +3,14 @@
 #include <vector>
 #include <iostream>
 
+
+enum eMapState
+{
+	eMapState_Rest,
+	eMapState_Burning,
+	eMapState_Final
+};
+
 class CComponent
 {
 public:
@@ -107,6 +115,81 @@ private:
 	}
 };
 
+class CMapState
+{
+public:
+	virtual void UpdateMap() = 0;
+};
+
+class CRestMap : public CMapState
+{
+public:
+	virtual ~CRestMap() {};
+
+	static CRestMap* GetMapStateInstance()
+	{
+		if (!MapStateInstance)
+			MapStateInstance = new CRestMap();
+
+		return MapStateInstance;
+	}
+
+	virtual void UpdateMap()
+	{
+		std::cout << "Let's Rest time~" << std::endl;
+		//		SetMapState(_CLoadMap, CRestMap::GetMapStateInstance());
+	}
+
+private:
+	static CRestMap* MapStateInstance;
+};
+
+class CBurningMap : public CMapState
+{
+public:
+	virtual ~CBurningMap() {};
+
+	static CBurningMap* GetMapStateInstance()
+	{
+		if (!MapStateInstance)
+			MapStateInstance = new CBurningMap();
+
+		return MapStateInstance;
+	}
+
+	virtual void UpdateMap()
+	{
+		std::cout << "Let's Burning time~" << std::endl;
+		//		SetMapState(_CLoadMap, CBurningMap::GetMapStateInstance());
+	}
+
+private:
+	static CBurningMap* MapStateInstance;
+};
+
+class CFinalMap : public CMapState
+{
+public:
+	virtual ~CFinalMap() {};
+
+	static CFinalMap* GetMapStateInstance()
+	{
+		if (!MapStateInstance)
+			MapStateInstance = new CFinalMap();
+
+		return MapStateInstance;
+	}
+
+	virtual void UpdateMap()
+	{
+		std::cout << "Let's Final time~" << std::endl;
+		//		SetMapState(_CLoadMap, CBurningMap::GetMapStateInstance());
+	}
+
+private:
+	static CFinalMap* MapStateInstance;
+};
+
 class CLoad {
 public:
 	virtual void DrawBasicMap() = 0;
@@ -114,15 +197,42 @@ public:
 
 class CLoadMap : public CLoad {
 public:
+	CLoadMap()
+	{
+		MapState = CRestMap::GetMapStateInstance();
+	}
 	void DrawBasicMap()
 	{
 		std::cout << "Load map start" << std::endl;
 	}
+
+	void SetMapState(eMapState _eMapState)
+	{
+		switch (_eMapState)
+		{
+		case eMapState_Rest:
+			MapState = CRestMap::GetMapStateInstance();
+		case eMapState_Burning:
+			MapState = CBurningMap::GetMapStateInstance();
+		case eMapState_Final:
+			MapState = CFinalMap::GetMapStateInstance();
+		default:
+			break;
+		}
+	}
+
+	void UpdateMap()
+	{
+		MapState->UpdateMap();
+	}
+
+private:
+	CMapState* MapState;
 };
 
 class CLoadMapProxy : public CLoad {
 public:
-	CLoadMapProxy() :LoadMap(NULL) {}
+	CLoadMapProxy() :LoadMap(NULL){}
 	~CLoadMapProxy() 
 	{ 
 		if (LoadMap) 
@@ -138,6 +248,17 @@ public:
 		}
 		LoadMap->DrawBasicMap();
 	}
+
+	void DrawPlayMap()
+	{
+		LoadMap->UpdateMap();
+	}
+
+	void SetMapState(eMapState _eMapState)
+	{
+		LoadMap->SetMapState(_eMapState);
+	}
+
 private:
 	CLoadMap* LoadMap;
 };

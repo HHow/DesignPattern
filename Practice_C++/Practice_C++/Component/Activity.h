@@ -73,7 +73,7 @@ public:
 	void AddObserver(CFacade* _CFacade);
 	void DeleteObserver(CFacade* _CFacade);
 
-	virtual void StatusUpdating(std::string strThreadName) = 0;
+	virtual void StatusUpdating() = 0;
 
 protected:
 	void Notify();
@@ -88,5 +88,5 @@ public:
 	CStatusSubject() {}
 	~CStatusSubject() {}
 
-	virtual void StatusUpdating(std::string strThreadName);
+	virtual void StatusUpdating();
 };
