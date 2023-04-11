@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -7,7 +8,8 @@ enum eStaminaType
 	eNone = 0,
 	eBlood,
 	eShield,
-	eReroll
+	eReroll,
+	eStaminaType_max
 };
 
 class CombineUnit

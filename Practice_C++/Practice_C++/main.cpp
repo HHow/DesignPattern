@@ -60,7 +60,7 @@ int main(void)
 	// 유저 상태 계속 업데이트
 //	std::thread threadStatus = std::thread{ &CSubject::StatusUpdating, &StatusSubject };
 //	std::thread threadStatus = std::thread(StatusSubject->StatusUpdating);
-	std::thread threadStatus([&](CSubject* _StatusSubject) { _StatusSubject->StatusUpdating(); }, &StatusSubject);
+//	std::thread threadStatus([&](CSubject* _StatusSubject) { _StatusSubject->StatusUpdating(); }, &StatusSubject);
 
 
 
@@ -78,7 +78,7 @@ int main(void)
 	}
 
 
-	threadStatus.join();
+//	threadStatus.join();
 	delete LoadMapProxy;
 	return 0;
 }

@@ -121,6 +121,7 @@ public:
 	virtual void UpdateMap() = 0;
 };
 
+
 class CRestMap : public CMapState
 {
 public:
