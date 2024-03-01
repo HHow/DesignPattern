@@ -1,0 +1,15 @@
+
+set (SOURCES
+     ./src/Activity.cpp
+     ./src/Component.cpp
+     ./src/Facade.cpp
+     ./src/Map.cpp)
+
+add_library(Component STATIC ${SOURCES})
+
+#----------------------
+
+#project(Component)
+#file(GLOB SOURCES src/*.cpp)
+#add_library(${PROJECT_NAME} OBJECT ${SOURCES})
+#target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

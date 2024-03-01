@@ -13,8 +13,12 @@ enum eMapState
 
 class CComponent
 {
-public:
-	virtual void Draw() = 0;
+	public:
+		CComponent(){};
+		virtual ~CComponent(){};
+
+	public:
+		virtual void Draw() = 0;
 };
 
 class CMountain : public CComponent

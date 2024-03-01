@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include <string>
 #include <thread>
@@ -9,76 +8,73 @@
 #include "Component/Facade.h"
 
 
-
 int main(void)
 {
-	// Ã¤ÆÃ °ü¸®¿ë factory·Î ÇÏ¸é ÁÁÀ»µí
-	CMetiator* ChatMetiator = new CChatMetiator();
+	std::cout<<"main"<<std::endl;
+	
+	// Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ factoryï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	CMetiator *ChatMetiator = new CChatMetiator();
 
-	CSubject* StatusSubject = new CStatusSubject();
+	CSubject *StatusSubject = new CStatusSubject();
 
 	// Load basic map
-	CLoad* LoadMapProxy = new CLoadMapProxy();
-	std::vector<CFacade*> vtUser;
-	// 4ÀÎ¿ë °ÔÀÓ
-	for(int i=0;i<4;i++)
+	CLoad *LoadMapProxy = new CLoadMapProxy();
+	std::vector<CFacade *> vtUser;
+	// 4ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+	for (int i = 0; i < 4; i++)
 	{
 		std::string UserName, InputTribe;
 		std::cout << "Input your name" << std::endl;
 		std::cin >> UserName;
 		std::cout << "Input 'Terran' or 'Protoss'" << std::endl;
 		std::cin >> InputTribe;
-		CFacade* userFacade = new CFacade(UserName, InputTribe);
+		CFacade *userFacade = new CFacade(UserName, InputTribe);
 		vtUser.push_back(userFacade);
 		ChatMetiator->AddClient(userFacade);
 		StatusSubject->AddObserver(userFacade);
 	}
 
-	// ±âº» ¸Ê »ý¼º
+	// ï¿½âº» ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	LoadMapProxy->DrawBasicMap();
 
-	// À¯Àúµé ±âº»¼¼ÆÃ
-	for(int i=0; i<4; i++)
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½
+	for (int i = 0; i < 4; i++)
 	{
 		if (vtUser[i]->GetTribe())
 		{
 			Unit *unit = vtUser[i]->GetTribe()->MakeUnit();
 
-			// À¯´Ö »ý¼º
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}
 		else
 			continue;
 
 		// make map
-		CComponent* pRockComponent = new CCircleDecorator(new CTriangleDecorator(new CDecorator(new CRock())));
-		CComponent* pMountainComponent = new CTriangleDecorator(new CCircleDecorator(new CDecorator(new CMountain())));
+		CComponent *pRockComponent = new CCircleDecorator(new CTriangleDecorator(new CDecorator(new CRock())));
+		CComponent *pMountainComponent = new CTriangleDecorator(new CCircleDecorator(new CDecorator(new CMountain())));
 
 		vtUser[i]->AddComponent(pRockComponent);
 		vtUser[i]->AddComponent(pMountainComponent);
 		vtUser[i]->Draw();
 	}
-	// À¯Àú »óÅÂ °è¼Ó ¾÷µ¥ÀÌÆ®
-//	std::thread threadStatus = std::thread{ &CSubject::StatusUpdating, &StatusSubject };
-//	std::thread threadStatus = std::thread(StatusSubject->StatusUpdating);
-//	std::thread threadStatus([&](CSubject* _StatusSubject) { _StatusSubject->StatusUpdating(); }, &StatusSubject);
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+	//	std::thread threadStatus = std::thread{ &CSubject::StatusUpdating, &StatusSubject };
+	//	std::thread threadStatus = std::thread(StatusSubject->StatusUpdating);
+	//	std::thread threadStatus([&](CSubject* _StatusSubject) { _StatusSubject->StatusUpdating(); }, &StatusSubject);
 
-
-
-	// ¹ß¾ð±Ç ÇÑ¹ø¾¿¸¸ ºÎ¿©
+	// ï¿½ß¾ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¿ï¿½
 	for (int i = 0; i < 4; i++)
 	{
-		ChatMetiator->Chating(vtUser[i], "³ÊÈò ¹Ùº¸¾ß");
+		ChatMetiator->Chating(vtUser[i], "ï¿½ï¿½ï¿½ï¿½ ï¿½Ùºï¿½ï¿½ï¿½");
 	}
-
 
 	while (1)
 	{
-		// °ÔÀÓ°ø°£
-
+		// ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½
 	}
 
-
-//	threadStatus.join();
+	//	threadStatus.join();
 	delete LoadMapProxy;
+	
 	return 0;
 }

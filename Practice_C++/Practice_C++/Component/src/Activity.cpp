@@ -19,20 +19,20 @@ void CActUser::PlusKillCount()
 void CActUser::Update()
 {
 	if (KillUserCount >= 5 && KillUserCount < 10)
-		stTitle = "ÇÐ»ìÀÚ";
+		stTitle = "ï¿½Ð»ï¿½ï¿½ï¿½";
 	else if (KillUserCount >= 10)
-		stTitle = "¾Ç¸¶";
+		stTitle = "ï¿½Ç¸ï¿½";
 }
 
 
 bool CSwearExpression::CheckWord(std::string _strInputWord)
 {
-	if (_strInputWord.find("¤Ç") >= 0)
-		std::cout << "°ÇÀüÇÑ ¼ÒÈ¯»ç´Â ÂøÇØ¿ä" << std::endl;
-	else if (_strInputWord.find("¹Ùº¸") >= 0)
-		std::cout << "°ÇÀüÇÑ ¼ÒÈ¯»ç´Â ÂøÇØ¿ä" << std::endl;
-	else if (_strInputWord.find("¸ÛÃ»ÀÌ") >= 0)
-		std::cout << "°ÇÀüÇÑ ¼ÒÈ¯»ç´Â ÂøÇØ¿ä" << std::endl;
+	if (_strInputWord.find("ï¿½ï¿½") >= 0)
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¿ï¿½" << std::endl;
+	else if (_strInputWord.find("ï¿½Ùºï¿½") >= 0)
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¿ï¿½" << std::endl;
+	else if (_strInputWord.find("ï¿½ï¿½Ã»ï¿½ï¿½") >= 0)
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¿ï¿½" << std::endl;
 	else
 		return true;
 	return false;
@@ -41,12 +41,12 @@ bool CSwearExpression::CheckWord(std::string _strInputWord)
 
 bool CPrivacyExpression::CheckWord(std::string _strInputWord)
 {
-	if (_strInputWord.find("°èÁÂ") >= 0)
-		std::cout << "°ÇÀüÇÑ ¼ÒÈ¯»ç´Â °³ÀÎÁ¤º¸¸¦ ¸»ÇÏÁö ¾Ê¾Æ¿ä" << std::endl;
-	else if (_strInputWord.find("ÀüÈ­") >= 0)
-		std::cout << "°ÇÀüÇÑ ¼ÒÈ¯»ç´Â °³ÀÎÁ¤º¸¸¦ ¸»ÇÏÁö ¾Ê¾Æ¿ä" << std::endl;
-	else if (_strInputWord.find("ÁÖ¼Ò") >= 0)
-		std::cout << "°ÇÀüÇÑ ¼ÒÈ¯»ç´Â °³ÀÎÁ¤º¸¸¦ ¸»ÇÏÁö ¾Ê¾Æ¿ä" << std::endl;
+	if (_strInputWord.find("ï¿½ï¿½ï¿½ï¿½") >= 0)
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æ¿ï¿½" << std::endl;
+	else if (_strInputWord.find("ï¿½ï¿½È­") >= 0)
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æ¿ï¿½" << std::endl;
+	else if (_strInputWord.find("ï¿½Ö¼ï¿½") >= 0)
+		std::cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æ¿ï¿½" << std::endl;
 	else
 		return true;
 	return false;
@@ -72,7 +72,7 @@ void CChatMetiator::Chating(CFacade* _User, std::string _message)
 		{
 			std::string strUsername = _User->GetActUser()->GetUserName();
 			std::string strUserSendMessage = _User->DoingChat(_message);
-			vtUsers[i]->GetActUser()->ReceiveMessage(strUsername + "´Ô : " + strUserSendMessage);
+			vtUsers[i]->GetActUser()->ReceiveMessage(strUsername + "ï¿½ï¿½ : " + strUserSendMessage);
 		}
 	}
 }
@@ -108,15 +108,15 @@ void CSubject::Notify()
 
 void CStatusSubject::StatusUpdating()
 {
-	// ÃÊ´ÜÀ§
-	int StartTime = timeGetTime() / 1000;
-	while (1)
-	{
-		// °ÔÀÓ½Ã°£ 10000ÃÊ
-		if (timeGetTime() / 1000 - StartTime >= 10000)
-			break;
-		Notify();
-		// 1ÃÊ sleep
-		Sleep(1000);
-	}
+	// ï¿½Ê´ï¿½ï¿½ï¿½
+	//int StartTime = timeGetTime() / 1000;
+	// while (1)
+	// {
+	// 	// ï¿½ï¿½ï¿½Ó½Ã°ï¿½ 10000ï¿½ï¿½
+	// 	if (timeGetTime() / 1000 - StartTime >= 10000)
+	// 		break;
+	// 	Notify();
+	// 	// 1ï¿½ï¿½ sleep
+	// 	Sleep(1000);
+	// }
 }

@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include <windows.h>
+//#include <windows.h>
+#include <unistd.h>
 #include <vector>
 
 class CFacade;
