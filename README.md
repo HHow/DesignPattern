@@ -26,6 +26,7 @@ pattern remind
 refactory guru 좀 친다
 
 <adaptor pattern>
+  
 <img width="300" alt="스크린샷 2024-03-09 오후 5 24 13" src="https://github.com/HHow/DesignPattern/assets/31755455/d8632c06-b653-4051-8b7f-696803427c61">
 https://refactoring.guru/ko/design-patterns/adapter
 
