@@ -22,21 +22,15 @@ cmake --build . or make
 실행파일 main 생성
 
 -----------------------------
-pattern remind
-refactory guru 좀 친다
+Design pattern remind
 
 1.adaptor pattern
 
 
 <img width="300" alt="스크린샷 2024-03-09 오후 5 24 13" src="https://github.com/HHow/DesignPattern/assets/31755455/d8632c06-b653-4051-8b7f-696803427c61">
 
-https://refactoring.guru/ko/design-patterns/adapter
 
-https://refactoring.guru/ko/design-patterns/adapter/cpp/example
-
-https://cinrueom.tistory.com/49
-
-새로운 기능이 추가되지만 사용자는 기존에 쓰는 api를 계속 쓰고싶어 한다.
+새로운 기능이 추가되지만 사용자(client)는 기존에 쓰는 api를 계속 쓰고싶어 한다.
 
 이 기능은 기존의 api로 제공하기 좀 껄끄럽지만
 
@@ -46,4 +40,12 @@ https://cinrueom.tistory.com/49
 
 2.다중 상속을 통해 기존 api호출되면 신규 class 에서 동작하는 기능을 추가로 호출
 
+
++ 출처
+
+https://refactoring.guru/ko/design-patterns/adapter
+
+https://refactoring.guru/ko/design-patterns/adapter/cpp/example
+
+https://cinrueom.tistory.com/49
 
