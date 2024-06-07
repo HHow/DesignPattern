@@ -1,200 +1,165 @@
-#pragma once
-#include <string>
-#include <vector>
+#ifndef _HEADER_MAP_H_
+#define _HEADER_MAP_H_
+
 #include <iostream>
+#include <list>
+#include <unordered_map>
+#include "../Type/type.h"
 
-
-enum eMapState
+namespace Map
 {
-	eMapState_Rest,
-	eMapState_Burning,
-	eMapState_Final
-};
-
-class CComponent
-{
-	public:
-		CComponent(){};
-		virtual ~CComponent(){};
-
-	public:
-		virtual void Draw() = 0;
-};
-
-class CMountain : public CComponent
+class Component
 {
 public:
-	void Draw()
+	Component():m_pParentComponent(nullptr) {}
+	virtual ~Component(){}
+	void SetParent(Component* _pComponent);
+	Component* GetComponent() const;
+	virtual void AddComponent(Component* _pComponent) {}
+	virtual void RemoveComponent(Component* _pComponent) {}
+	virtual bool IsComposite() const
 	{
-		std::cout << "make Mountain" << std::endl;
+		return false;
+	}
+
+	virtual void Realize() = 0;
+
+	bool operator == (const Component& _pComponent)
+	{
+		return this == &_pComponent;
+	}
+protected:
+	Component* m_pParentComponent;
+};
+
+class Mountain : public Component
+{
+public:
+	virtual void Realize();
+};
+
+class Rock : public Component
+{
+public:
+	virtual void Realize();
+};
+
+class MapComposite: public Component
+{
+public:
+	virtual void AddComponent(Component* _pComponent) override;
+	virtual void RemoveComponent(Component* _pComponent) override; 
+
+	virtual bool IsComposite() const
+	{
+		return true;
+	}
+
+	virtual void Realize() override;
+
+protected:
+	std::list<Component*> ltChildComponent;
+};
+
+class MapDecorator: public Component
+{
+public:
+	MapDecorator(Component* _pComponent)
+	:pComponent(_pComponent)
+	{	
+	}
+
+	virtual void Realize() override
+	{
+		this->pComponent->Realize();
+	}
+
+protected:
+	Component *pComponent;
+};
+
+class ConcreteMapDecorator : public MapDecorator
+{
+public:
+	ConcreteMapDecorator(Component* _pComponent)
+	:MapDecorator(_pComponent)
+	{
+	}
+
+	virtual void Realize() override
+	{
+		MapDecorator::Realize();
+		std::cout<<"Concreate deco"<<std::endl;
 	}
 };
 
-class CRock : public CComponent
+class MapProtoType
 {
 public:
-	void Draw()
-	{
-		std::cout << "make Rock" << std::endl;
-	}
-};
-
-class CCompositeForm : public CComponent
-{
-public:
-	void Draw()
-	{
-		for (int i = 0; i < _components.size(); i++)
-		{
-			_components[i]->Draw();
-		}
-	}
-
-	void AddComponent(CComponent* _component)
-	{
-		_components.push_back(_component);
-	}
-
-	void SubComponent()
-	{
-		_components.pop_back();
-	}
-
-private: 
-	std::vector<CComponent*> _components;
-};
-
-class CDecorator : public CComponent
-{
-public:
-	CDecorator(CComponent* _component) : pComponent(_component){}
-	~CDecorator()
-	{
-		if (pComponent)
-			delete pComponent;
-	}
-	virtual void Draw()
-	{
-		if (pComponent)
-			pComponent->Draw();
-	}
+	MapProtoType() {}
+	MapProtoType(std::string _strName)
+	:m_strName(_strName) {}
+	virtual ~MapProtoType() {}
+	virtual MapProtoType* Clone() const = 0;
 
 private:
-	CComponent* pComponent;
+	std::string m_strName;
 };
 
-class CTriangleDecorator : public CDecorator
+class ConcreteMapProtoType1 : public MapProtoType
 {
 public:
-	CTriangleDecorator(CComponent* _component) : CDecorator(_component) {}
-	
-	virtual void Draw()
-	{
-		CDecorator::Draw();
-		TriangleDraw();
-	}
+	ConcreteMapProtoType1() {}
+	ConcreteMapProtoType1(std::string _strName)
+	:MapProtoType(_strName) {}
 
+	MapProtoType *Clone() const override
+	{
+		return new ConcreteMapProtoType1(*this);
+	}
+};
+
+class ConcreteMapProtoType2 : public MapProtoType
+{
+public:
+	ConcreteMapProtoType2() {}
+	ConcreteMapProtoType2(std::string _strName)
+	:MapProtoType(_strName) {}
+
+	MapProtoType *Clone() const override
+	{
+		return new ConcreteMapProtoType2(*this);
+	}
+};
+
+class MapProtoTypeFactory
+{
 private:
-	void TriangleDraw()
-	{
-		std::cout << "make Decorator Triangle" << std::endl;
-	}
-};
+	std::unordered_map<eMapProtoType, MapProtoType*, std::hash<int> > m_mapProtoType;
 
-class CCircleDecorator : public CDecorator
-{
 public:
-	CCircleDecorator(CComponent* _component) : CDecorator(_component) {}
-
-	virtual void Draw()
-	{
-		CDecorator::Draw();
-		CircleDraw();
-	}
-
-private:
-	void CircleDraw()
-	{
-		std::cout << "make Decorator Circle" << std::endl;
-	}
-};
-
-class CMapState
+MapProtoTypeFactory()
 {
-public:
-	virtual void UpdateMap() = 0;
-};
+	m_mapProtoType[eMapProto_Type1] = new ConcreteMapProtoType1("ProtoType1");
+	m_mapProtoType[eMapProto_Type2] = new ConcreteMapProtoType2("ProtoType2");
+}
 
-
-class CRestMap : public CMapState
+~MapProtoTypeFactory()
 {
-public:
-	virtual ~CRestMap() {};
+	delete m_mapProtoType[eMapProto_Type1];
+	delete m_mapProtoType[eMapProto_Type2];
+}
 
-	static CRestMap* GetMapStateInstance()
-	{
-		if (!MapStateInstance)
-			MapStateInstance = new CRestMap();
-
-		return MapStateInstance;
-	}
-
-	virtual void UpdateMap()
-	{
-		std::cout << "Let's Rest time~" << std::endl;
-		//		SetMapState(_CLoadMap, CRestMap::GetMapStateInstance());
-	}
-
-private:
-	static CRestMap* MapStateInstance;
-};
-
-class CBurningMap : public CMapState
+MapProtoType* CreateMapProtoType(eMapProtoType _eMapProtoType)
 {
-public:
-	virtual ~CBurningMap() {};
-
-	static CBurningMap* GetMapStateInstance()
-	{
-		if (!MapStateInstance)
-			MapStateInstance = new CBurningMap();
-
-		return MapStateInstance;
-	}
-
-	virtual void UpdateMap()
-	{
-		std::cout << "Let's Burning time~" << std::endl;
-		//		SetMapState(_CLoadMap, CBurningMap::GetMapStateInstance());
-	}
-
-private:
-	static CBurningMap* MapStateInstance;
+	return m_mapProtoType[_eMapProtoType]->Clone();
+}
 };
 
-class CFinalMap : public CMapState
-{
-public:
-	virtual ~CFinalMap() {};
+}
 
-	static CFinalMap* GetMapStateInstance()
-	{
-		if (!MapStateInstance)
-			MapStateInstance = new CFinalMap();
-
-		return MapStateInstance;
-	}
-
-	virtual void UpdateMap()
-	{
-		std::cout << "Let's Final time~" << std::endl;
-		//		SetMapState(_CLoadMap, CBurningMap::GetMapStateInstance());
-	}
-
-private:
-	static CFinalMap* MapStateInstance;
-};
-
+#endif
+/*
 class CLoad {
 public:
 	virtual void DrawBasicMap() = 0;
@@ -267,3 +232,5 @@ public:
 private:
 	CLoadMap* LoadMap;
 };
+*/
+

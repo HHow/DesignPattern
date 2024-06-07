@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _HEADER_ACTIVITY_H_
+#define _HEADER_ACTIVITY_H_
+
 #include <string>
 #include <iostream>
 //#include <windows.h>
@@ -91,3 +93,5 @@ public:
 
 	virtual void StatusUpdating();
 };
+
+#endif

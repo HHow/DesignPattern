@@ -1,0 +1,10 @@
+BasedOnStyle: Google
+ColumnLimit: 0
+
+UseTab: Always
+IndentWidth: 4
+TabWidth:4
+AlignConsecutiveMacros:
+    Enabled: true
+    AcrossEmptyLines: true
+    AcrossComments: true

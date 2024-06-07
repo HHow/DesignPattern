@@ -38,13 +38,10 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
+  # Include the install script for each subdirectory.
   include("/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Factory/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component/cmake_install.cmake")
+
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

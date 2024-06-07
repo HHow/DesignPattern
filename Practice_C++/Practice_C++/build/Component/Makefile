@@ -133,78 +133,6 @@ Component/fast:
 	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/build
 .PHONY : Component/fast
 
-src/Activity.o: src/Activity.cpp.o
-.PHONY : src/Activity.o
-
-# target to build an object file
-src/Activity.cpp.o:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Activity.cpp.o
-.PHONY : src/Activity.cpp.o
-
-src/Activity.i: src/Activity.cpp.i
-.PHONY : src/Activity.i
-
-# target to preprocess a source file
-src/Activity.cpp.i:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Activity.cpp.i
-.PHONY : src/Activity.cpp.i
-
-src/Activity.s: src/Activity.cpp.s
-.PHONY : src/Activity.s
-
-# target to generate assembly for a file
-src/Activity.cpp.s:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Activity.cpp.s
-.PHONY : src/Activity.cpp.s
-
-src/Component.o: src/Component.cpp.o
-.PHONY : src/Component.o
-
-# target to build an object file
-src/Component.cpp.o:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Component.cpp.o
-.PHONY : src/Component.cpp.o
-
-src/Component.i: src/Component.cpp.i
-.PHONY : src/Component.i
-
-# target to preprocess a source file
-src/Component.cpp.i:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Component.cpp.i
-.PHONY : src/Component.cpp.i
-
-src/Component.s: src/Component.cpp.s
-.PHONY : src/Component.s
-
-# target to generate assembly for a file
-src/Component.cpp.s:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Component.cpp.s
-.PHONY : src/Component.cpp.s
-
-src/Facade.o: src/Facade.cpp.o
-.PHONY : src/Facade.o
-
-# target to build an object file
-src/Facade.cpp.o:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Facade.cpp.o
-.PHONY : src/Facade.cpp.o
-
-src/Facade.i: src/Facade.cpp.i
-.PHONY : src/Facade.i
-
-# target to preprocess a source file
-src/Facade.cpp.i:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Facade.cpp.i
-.PHONY : src/Facade.cpp.i
-
-src/Facade.s: src/Facade.cpp.s
-.PHONY : src/Facade.s
-
-# target to generate assembly for a file
-src/Facade.cpp.s:
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Facade.cpp.s
-.PHONY : src/Facade.cpp.s
-
 src/Map.o: src/Map.cpp.o
 .PHONY : src/Map.o
 
@@ -229,6 +157,54 @@ src/Map.cpp.s:
 	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Map.cpp.s
 .PHONY : src/Map.cpp.s
 
+src/Unit.o: src/Unit.cpp.o
+.PHONY : src/Unit.o
+
+# target to build an object file
+src/Unit.cpp.o:
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Unit.cpp.o
+.PHONY : src/Unit.cpp.o
+
+src/Unit.i: src/Unit.cpp.i
+.PHONY : src/Unit.i
+
+# target to preprocess a source file
+src/Unit.cpp.i:
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Unit.cpp.i
+.PHONY : src/Unit.cpp.i
+
+src/Unit.s: src/Unit.cpp.s
+.PHONY : src/Unit.s
+
+# target to generate assembly for a file
+src/Unit.cpp.s:
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/Unit.cpp.s
+.PHONY : src/Unit.cpp.s
+
+src/User.o: src/User.cpp.o
+.PHONY : src/User.o
+
+# target to build an object file
+src/User.cpp.o:
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/User.cpp.o
+.PHONY : src/User.cpp.o
+
+src/User.i: src/User.cpp.i
+.PHONY : src/User.i
+
+# target to preprocess a source file
+src/User.cpp.i:
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/User.cpp.i
+.PHONY : src/User.cpp.i
+
+src/User.s: src/User.cpp.s
+.PHONY : src/User.s
+
+# target to generate assembly for a file
+src/User.cpp.s:
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build && $(MAKE) $(MAKESILENT) -f Component/CMakeFiles/Component.dir/build.make Component/CMakeFiles/Component.dir/src/User.cpp.s
+.PHONY : src/User.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -238,18 +214,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Component"
-	@echo "... src/Activity.o"
-	@echo "... src/Activity.i"
-	@echo "... src/Activity.s"
-	@echo "... src/Component.o"
-	@echo "... src/Component.i"
-	@echo "... src/Component.s"
-	@echo "... src/Facade.o"
-	@echo "... src/Facade.i"
-	@echo "... src/Facade.s"
 	@echo "... src/Map.o"
 	@echo "... src/Map.i"
 	@echo "... src/Map.s"
+	@echo "... src/Unit.o"
+	@echo "... src/Unit.i"
+	@echo "... src/Unit.s"
+	@echo "... src/User.o"
+	@echo "... src/User.i"
+	@echo "... src/User.s"
 .PHONY : help
 
 

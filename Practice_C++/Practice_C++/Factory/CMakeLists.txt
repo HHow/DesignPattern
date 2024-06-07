@@ -1,3 +1,8 @@
+cmake_minimum_required(VERSION 3.10)
+
+# C++ 표준 설정
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set (SOURCES
      ./src/Factory.cpp)

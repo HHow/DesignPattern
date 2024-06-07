@@ -72,52 +72,10 @@ include Component/CMakeFiles/Component.dir/progress.make
 # Include the compile flags for this target's objects.
 include Component/CMakeFiles/Component.dir/flags.make
 
-Component/CMakeFiles/Component.dir/src/Activity.cpp.o: Component/CMakeFiles/Component.dir/flags.make
-Component/CMakeFiles/Component.dir/src/Activity.cpp.o: /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Activity.cpp
-Component/CMakeFiles/Component.dir/src/Activity.cpp.o: Component/CMakeFiles/Component.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Component/CMakeFiles/Component.dir/src/Activity.cpp.o"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Component/CMakeFiles/Component.dir/src/Activity.cpp.o -MF CMakeFiles/Component.dir/src/Activity.cpp.o.d -o CMakeFiles/Component.dir/src/Activity.cpp.o -c /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Activity.cpp
-
-Component/CMakeFiles/Component.dir/src/Activity.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Component.dir/src/Activity.cpp.i"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Activity.cpp > CMakeFiles/Component.dir/src/Activity.cpp.i
-
-Component/CMakeFiles/Component.dir/src/Activity.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Component.dir/src/Activity.cpp.s"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Activity.cpp -o CMakeFiles/Component.dir/src/Activity.cpp.s
-
-Component/CMakeFiles/Component.dir/src/Component.cpp.o: Component/CMakeFiles/Component.dir/flags.make
-Component/CMakeFiles/Component.dir/src/Component.cpp.o: /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Component.cpp
-Component/CMakeFiles/Component.dir/src/Component.cpp.o: Component/CMakeFiles/Component.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object Component/CMakeFiles/Component.dir/src/Component.cpp.o"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Component/CMakeFiles/Component.dir/src/Component.cpp.o -MF CMakeFiles/Component.dir/src/Component.cpp.o.d -o CMakeFiles/Component.dir/src/Component.cpp.o -c /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Component.cpp
-
-Component/CMakeFiles/Component.dir/src/Component.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Component.dir/src/Component.cpp.i"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Component.cpp > CMakeFiles/Component.dir/src/Component.cpp.i
-
-Component/CMakeFiles/Component.dir/src/Component.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Component.dir/src/Component.cpp.s"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Component.cpp -o CMakeFiles/Component.dir/src/Component.cpp.s
-
-Component/CMakeFiles/Component.dir/src/Facade.cpp.o: Component/CMakeFiles/Component.dir/flags.make
-Component/CMakeFiles/Component.dir/src/Facade.cpp.o: /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Facade.cpp
-Component/CMakeFiles/Component.dir/src/Facade.cpp.o: Component/CMakeFiles/Component.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object Component/CMakeFiles/Component.dir/src/Facade.cpp.o"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Component/CMakeFiles/Component.dir/src/Facade.cpp.o -MF CMakeFiles/Component.dir/src/Facade.cpp.o.d -o CMakeFiles/Component.dir/src/Facade.cpp.o -c /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Facade.cpp
-
-Component/CMakeFiles/Component.dir/src/Facade.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Component.dir/src/Facade.cpp.i"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Facade.cpp > CMakeFiles/Component.dir/src/Facade.cpp.i
-
-Component/CMakeFiles/Component.dir/src/Facade.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Component.dir/src/Facade.cpp.s"
-	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Facade.cpp -o CMakeFiles/Component.dir/src/Facade.cpp.s
-
 Component/CMakeFiles/Component.dir/src/Map.cpp.o: Component/CMakeFiles/Component.dir/flags.make
 Component/CMakeFiles/Component.dir/src/Map.cpp.o: /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Map.cpp
 Component/CMakeFiles/Component.dir/src/Map.cpp.o: Component/CMakeFiles/Component.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object Component/CMakeFiles/Component.dir/src/Map.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Component/CMakeFiles/Component.dir/src/Map.cpp.o"
 	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Component/CMakeFiles/Component.dir/src/Map.cpp.o -MF CMakeFiles/Component.dir/src/Map.cpp.o.d -o CMakeFiles/Component.dir/src/Map.cpp.o -c /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Map.cpp
 
 Component/CMakeFiles/Component.dir/src/Map.cpp.i: cmake_force
@@ -128,23 +86,49 @@ Component/CMakeFiles/Component.dir/src/Map.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Component.dir/src/Map.cpp.s"
 	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Map.cpp -o CMakeFiles/Component.dir/src/Map.cpp.s
 
+Component/CMakeFiles/Component.dir/src/Unit.cpp.o: Component/CMakeFiles/Component.dir/flags.make
+Component/CMakeFiles/Component.dir/src/Unit.cpp.o: /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Unit.cpp
+Component/CMakeFiles/Component.dir/src/Unit.cpp.o: Component/CMakeFiles/Component.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object Component/CMakeFiles/Component.dir/src/Unit.cpp.o"
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Component/CMakeFiles/Component.dir/src/Unit.cpp.o -MF CMakeFiles/Component.dir/src/Unit.cpp.o.d -o CMakeFiles/Component.dir/src/Unit.cpp.o -c /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Unit.cpp
+
+Component/CMakeFiles/Component.dir/src/Unit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Component.dir/src/Unit.cpp.i"
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Unit.cpp > CMakeFiles/Component.dir/src/Unit.cpp.i
+
+Component/CMakeFiles/Component.dir/src/Unit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Component.dir/src/Unit.cpp.s"
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/Unit.cpp -o CMakeFiles/Component.dir/src/Unit.cpp.s
+
+Component/CMakeFiles/Component.dir/src/User.cpp.o: Component/CMakeFiles/Component.dir/flags.make
+Component/CMakeFiles/Component.dir/src/User.cpp.o: /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/User.cpp
+Component/CMakeFiles/Component.dir/src/User.cpp.o: Component/CMakeFiles/Component.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object Component/CMakeFiles/Component.dir/src/User.cpp.o"
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT Component/CMakeFiles/Component.dir/src/User.cpp.o -MF CMakeFiles/Component.dir/src/User.cpp.o.d -o CMakeFiles/Component.dir/src/User.cpp.o -c /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/User.cpp
+
+Component/CMakeFiles/Component.dir/src/User.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Component.dir/src/User.cpp.i"
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/User.cpp > CMakeFiles/Component.dir/src/User.cpp.i
+
+Component/CMakeFiles/Component.dir/src/User.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Component.dir/src/User.cpp.s"
+	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/Component/src/User.cpp -o CMakeFiles/Component.dir/src/User.cpp.s
+
 # Object files for target Component
 Component_OBJECTS = \
-"CMakeFiles/Component.dir/src/Activity.cpp.o" \
-"CMakeFiles/Component.dir/src/Component.cpp.o" \
-"CMakeFiles/Component.dir/src/Facade.cpp.o" \
-"CMakeFiles/Component.dir/src/Map.cpp.o"
+"CMakeFiles/Component.dir/src/Map.cpp.o" \
+"CMakeFiles/Component.dir/src/Unit.cpp.o" \
+"CMakeFiles/Component.dir/src/User.cpp.o"
 
 # External object files for target Component
 Component_EXTERNAL_OBJECTS =
 
-Component/libComponent.a: Component/CMakeFiles/Component.dir/src/Activity.cpp.o
-Component/libComponent.a: Component/CMakeFiles/Component.dir/src/Component.cpp.o
-Component/libComponent.a: Component/CMakeFiles/Component.dir/src/Facade.cpp.o
 Component/libComponent.a: Component/CMakeFiles/Component.dir/src/Map.cpp.o
+Component/libComponent.a: Component/CMakeFiles/Component.dir/src/Unit.cpp.o
+Component/libComponent.a: Component/CMakeFiles/Component.dir/src/User.cpp.o
 Component/libComponent.a: Component/CMakeFiles/Component.dir/build.make
 Component/libComponent.a: Component/CMakeFiles/Component.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libComponent.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libComponent.a"
 	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && $(CMAKE_COMMAND) -P CMakeFiles/Component.dir/cmake_clean_target.cmake
 	cd /Users/igwanho/Desktop/code/Git/DesignPattern/Practice_C++/Practice_C++/build/Component && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Component.dir/link.txt --verbose=$(VERBOSE)
 

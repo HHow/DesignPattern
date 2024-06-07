@@ -1,101 +1,48 @@
-#pragma once
-#include "../Component/Component.h"
+#ifndef _HEADER_FACTORY_H_
+#define _HEADER_FACTORY_H_
+
+#include <vector>
+#include "../Type/type.h"
+
+class Unit;
 
 class Tribe
 {
 public:
-	Tribe()
-	{
-		std::cout << "Basic Factory" << std::endl;
-	}
-	~Tribe()
-	{
-		std::cout<<"~Basic Factory" << std::endl;
-	}
-	virtual Unit* MakeUnit() const
-	{
-		std::cout << "Basic Factory MakeUnit" << std::endl;
-		return new Unit;
-	}
+	Tribe() {};
+	virtual ~Tribe() {};
 
-	virtual Building* MakeBuilding() const
-	{
-		std::cout << "Basic Factory MakeBuilding" << std::endl;
-		return new Building;
-	}
+	virtual void MakeUnit(const eUnitType _eUnitType) = 0;
+
+protected:
+	void SetUnit(Unit* _Unit);
+
+private:
+	std::vector<Unit*> m_vtUnit;
 };
 
 class Terran : public Tribe
 {
 public:
-	Terran()
-	{
-		std::cout << "Terran Factory" << std::endl;
-	}
-	~Terran()
-	{
-		std::cout << "~Terran Factory" << std::endl;
-	}
-	virtual Unit* MakeUnit() const
-	{
-		std::cout << "Terran Factory MakeUnit" << std::endl;
-		return new TerranUnit;
-	}
-	virtual Building* MakeBuilding() const
-	{
-		std::cout << "Terran Factory MakeBuilding" << std::endl;
-		return new TerranBuilding;
-	}
+	Terran();
+	virtual ~Terran();
+
+	virtual void MakeUnit(const eUnitType _eUnitType) override;
 };
 
 class Protoss : public Tribe
 {
 public:
-	Protoss()
-	{
-		std::cout << "Protoss Factory" << std::endl;
-	}
-	~Protoss()
-	{
-		std::cout << "~Protoss Factory" << std::endl;
-	}
-	virtual Unit* MakeUnit() const
-	{
-		std::cout << "Protoss Factory MakeUnit" << std::endl;
-		return new ProtossUnit;
-	}
-	virtual Building* MakeBuilding() const
-	{
-		std::cout << "Protoss Factory MakeBuilding" << std::endl;
-		return new ProtossBuilding;
-	}
+	Protoss();
+	virtual ~Protoss();
+	
+	virtual void MakeUnit(const eUnitType _eUnitType) override;
 };
 
-class Creator
+class TribeCreator
 {
-private:
-	static Creator* creator;
-
-	static void MakeCreator()
-	{
-		std::cout << "make Creator" << std::endl;
-		creator = new Creator;
-	}
-
 public:
-	static Tribe* MakeTribe(std::string _sType)
-	{
-		if (!creator)
-			MakeCreator();
-
-		if (_sType == "Terran")
-			return new Terran;
-		else if (_sType == "Protoss")
-			return new Protoss;
-		else
-		{
-			std::cout << "make nothing" << std::endl;
-			return NULL;
-		}
-	}
+	static Tribe* MakeTribe(const eTribeType _eTribeType);
 };
+
+#endif

@@ -1,7 +1,11 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.10)
+
+# C++ 표준 설정
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
 project(Practice_C++ VERSION 1.0.0 LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_VERBOSE_MAKEFILE true)
 
 add_subdirectory(Factory)

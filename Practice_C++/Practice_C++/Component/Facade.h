@@ -1,4 +1,6 @@
-#pragma once
+#ifndef _HEADER_FACADE_H_
+#define _HEADER_FACADE_H_
+
 #include <iostream>
 #include <vector>
 
@@ -7,7 +9,7 @@ class CAbstractExpression;
 class CActuser;
 class Tribe;
 class CComponent;
-class CCompositeForm;
+class MapConposite;
 
 class CFacade
 {
@@ -23,7 +25,9 @@ public:
 	Tribe* GetTribe();
 private:
 	Tribe* MyTribe = NULL;
-	CCompositeForm* CompositeMap;
+	MapConposite* m_pMapComposite;
 	CActUser* ActingUser = NULL;
 	std::vector<CAbstractExpression*> vtActList;
 };
+
+#endif
