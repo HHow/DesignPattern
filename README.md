@@ -65,6 +65,8 @@ https://refactoring.guru/ko/design-patterns/composite
 https://refactoring.guru/ko/design-patterns/composite/cpp/example
 
 
+26.01.25 데코레이터 수정중
+https://refactoring.guru/ko/design-patterns/decorator
 
 
 
