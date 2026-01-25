@@ -68,4 +68,13 @@ public:
 	virtual void GenerateBody() override;
 };
 
+class ZergUnit : public Unit
+{
+public:
+	ZergUnit() = delete;
+	ZergUnit(const std::string &_strUnitName);
+
+	virtual void GenerateBody() override;
+};
+
 #endif

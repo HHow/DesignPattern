@@ -1,6 +1,7 @@
 #ifndef _HEADER_USER_H_
 #define _HEADER_USER_H_
 
+#include <iostream>
 #include "../Type/type.h"
 
 class Tribe;

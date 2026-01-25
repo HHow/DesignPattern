@@ -19,20 +19,20 @@ void CActUser::PlusKillCount()
 void CActUser::Update()
 {
 	if (KillUserCount >= 5 && KillUserCount < 10)
-		stTitle = "�л���";
+		stTitle = "kill 5 ~ 10";
 	else if (KillUserCount >= 10)
-		stTitle = "�Ǹ�";
+		stTitle = "kill over 10";
 }
 
 
 bool CSwearExpression::CheckWord(std::string _strInputWord)
 {
-	if (_strInputWord.find("��") >= 0)
-		std::cout << "������ ��ȯ��� ���ؿ�" << std::endl;
-	else if (_strInputWord.find("�ٺ�") >= 0)
-		std::cout << "������ ��ȯ��� ���ؿ�" << std::endl;
-	else if (_strInputWord.find("��û��") >= 0)
-		std::cout << "������ ��ȯ��� ���ؿ�" << std::endl;
+	if (_strInputWord.find("die") >= 0)
+		std::cout << "dont chat swear" << std::endl;
+	else if (_strInputWord.find("fuck") >= 0)
+		std::cout << "dont chat swear" << std::endl;
+	else if (_strInputWord.find("go to hell") >= 0)
+		std::cout << "dont chat swear" << std::endl;
 	else
 		return true;
 	return false;
@@ -41,12 +41,12 @@ bool CSwearExpression::CheckWord(std::string _strInputWord)
 
 bool CPrivacyExpression::CheckWord(std::string _strInputWord)
 {
-	if (_strInputWord.find("����") >= 0)
-		std::cout << "������ ��ȯ��� ���������� ������ �ʾƿ�" << std::endl;
-	else if (_strInputWord.find("��ȭ") >= 0)
-		std::cout << "������ ��ȯ��� ���������� ������ �ʾƿ�" << std::endl;
-	else if (_strInputWord.find("�ּ�") >= 0)
-		std::cout << "������ ��ȯ��� ���������� ������ �ʾƿ�" << std::endl;
+	if (_strInputWord.find("name") >= 0)
+		std::cout << "dont chat privacy info" << std::endl;
+	else if (_strInputWord.find("addr") >= 0)
+		std::cout << "dont chat privacy info" << std::endl;
+	else if (_strInputWord.find("�tele") >= 0)
+		std::cout << "dont chat privacy info" << std::endl;
 	else
 		return true;
 	return false;

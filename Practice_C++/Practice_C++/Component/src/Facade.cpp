@@ -2,7 +2,7 @@
 #include "../Activity.h"
 #include "../../Factory/Factory.h"
 #include "../Map.h"
-#include "../Component.h"
+//#include "../Component.h"
 
 Creator* Creator::creator = NULL;
 
@@ -10,6 +10,7 @@ Creator* Creator::creator = NULL;
 CFacade::CFacade(std::string _strUserName, std::string _strType)
 {
 	ActingUser = new CActUser(_strUserName);
+	TribeCreator::MakeTribe(_strType);
 	MyTribe = Creator::MakeTribe(_strType);
 	vtActList.push_back(new CSwearExpression());
 	vtActList.push_back(new CPrivacyExpression());

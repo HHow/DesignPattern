@@ -4,7 +4,9 @@
 void Tribe::SetUnit(Unit * _Unit)
 {
     if(nullptr != _Unit)
+    {
         m_vtUnit.push_back(_Unit);
+    }
 }
 
 Terran::Terran() 
@@ -73,8 +75,42 @@ void Protoss::MakeUnit(const eUnitType _eUnitType)
     }
 
     SetUnit(pProtossUnit);
-
 }
+
+Zerg::Zerg()
+{
+    std::cout << "Make Protoss" << std::endl;
+}
+
+Zerg::~Zerg()
+{
+    std::cout << "Make Protoss" << std::endl;
+}
+
+void Zerg::MakeUnit(const eUnitType _eUnitType)
+{
+    std::cout << "Make Protoss Unit" << std::endl;
+
+    ZergUnit* pZergUnit = nullptr;
+
+    switch(_eUnitType)
+    {
+        case eUnit_Attacker:
+            pZergUnit = new ZergUnit("Attacker");
+            break;
+        case eUnit_Deffenser:
+            pZergUnit = new ZergUnit("Deffenser");
+            break;
+        case eUnit_Worker:
+            pZergUnit = new ZergUnit("Worker");
+            break;
+        default:
+            break;
+    }
+
+    SetUnit(pZergUnit);
+}
+
 Tribe * TribeCreator::MakeTribe(const eTribeType _eTribeType)
 {
     Tribe* pRetTribe = nullptr;

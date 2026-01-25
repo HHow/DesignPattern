@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
 #include <thread>
-//#include "Factory/Factory.h"
-//#include "Component/Map.h"
+#include "Factory/Factory.h"
+#include "Component/Map.h"
 
 int main(void)
 {
 	std::cout<<"main"<<std::endl;
-	/*
+	
 	CMetiator *ChatMetiator = new CChatMetiator();
 
 	CSubject *StatusSubject = new CStatusSubject();
@@ -70,6 +70,6 @@ int main(void)
 
 	//	threadStatus.join();
 	delete LoadMapProxy;
-	*/
+	
 	return 0;
 }

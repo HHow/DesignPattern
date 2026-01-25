@@ -39,6 +39,16 @@ public:
 	virtual void MakeUnit(const eUnitType _eUnitType) override;
 };
 
+class Zerg : public Tribe
+{
+public:
+	Zerg();
+	virtual ~Zerg();
+	
+	virtual void MakeUnit(const eUnitType _eUnitType) override;
+};
+
+// 팩토리 패턴
 class TribeCreator
 {
 public:

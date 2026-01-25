@@ -2,103 +2,117 @@
 #define _HEADER_MAP_H_
 
 #include <iostream>
+#include <memory>
 #include <list>
-#include <unordered_map>
 #include "../Type/type.h"
 
-namespace Map
-{
-class Component
+class MapComponent
 {
 public:
-	Component():m_pParentComponent(nullptr) {}
-	virtual ~Component(){}
-	void SetParent(Component* _pComponent);
-	Component* GetComponent() const;
-	virtual void AddComponent(Component* _pComponent) {}
-	virtual void RemoveComponent(Component* _pComponent) {}
-	virtual bool IsComposite() const
+	virtual ~MapComponent() = default;
+	virtual void add(std::unique_ptr<MapComponent> _pMapComponent)
 	{
-		return false;
+		(void)_pMapComponent;
 	}
-
-	virtual void Realize() = 0;
-
-	bool operator == (const Component& _pComponent)
+	virtual void remove(MapComponent* _pMapComponent)
 	{
-		return this == &_pComponent;
+		(void)_pMapComponent;
 	}
-protected:
-	Component* m_pParentComponent;
+	virtual void display() {}
 };
 
-class Mountain : public Component
+class MapComposite : public MapComponent
 {
 public:
-	virtual void Realize();
+	virtual ~MapComposite() = default;
+	virtual void add(std::unique_ptr<MapComponent> _pMapComponent) override
+	{
+		ltComponent.push_back(std::move(_pMapComponent));
+	}
+	virtual void remove(MapComponent* _pMapComponent) override
+	{
+		if (nullptr == _pMapComponent)
+		{
+			return;
+		}
+
+		for (auto it = ltComponent.begin(); it != ltComponent.end(); ++it)
+		{
+			if (it->get() == _pMapComponent)
+			{
+				ltComponent.erase(it);
+				return;
+			}
+		}
+	}
+private:
+	std::list<std::unique_ptr<MapComponent>> ltComponent;
 };
 
-class Rock : public Component
+class MapComponentLand : public MapComponent
 {
 public:
-	virtual void Realize();
-};
-
-class MapComposite: public Component
-{
-public:
-	virtual void AddComponent(Component* _pComponent) override;
-	virtual void RemoveComponent(Component* _pComponent) override; 
-
-	virtual bool IsComposite() const
+	virtual ~MapComponentLand() = default;
+	virtual void display() override
 	{
-		return true;
-	}
-
-	virtual void Realize() override;
-
-protected:
-	std::list<Component*> ltChildComponent;
-};
-
-class MapDecorator: public Component
-{
-public:
-	MapDecorator(Component* _pComponent)
-	:pComponent(_pComponent)
-	{	
-	}
-
-	virtual void Realize() override
-	{
-		this->pComponent->Realize();
-	}
-
-protected:
-	Component *pComponent;
-};
-
-class ConcreteMapDecorator : public MapDecorator
-{
-public:
-	ConcreteMapDecorator(Component* _pComponent)
-	:MapDecorator(_pComponent)
-	{
-	}
-
-	virtual void Realize() override
-	{
-		MapDecorator::Realize();
-		std::cout<<"Concreate deco"<<std::endl;
+		std::cout << "draw Land" << std::endl;
 	}
 };
 
+
+class MapComponentWater : public MapComponent
+{
+public:
+	virtual ~MapComponentWater() = default;
+	virtual void display() override
+	{
+		std::cout << "draw Water" << std::endl;
+	}
+};
+
+class MapDecorator : public MapComponent
+{
+public:
+	MapDecorator(std::unique_ptr<MapComponent> _pMapComponent)
+	:pInner(std::move(_pMapComponent))
+	{}
+
+	virtual void display() override
+	{
+		pInner->display();
+	}
+	
+private:
+	std::unique_ptr<MapComponent> pInner;
+};
+
+class MapDecoratorBlingBling : public MapDecorator
+{
+public:
+	virtual void display() override
+	{
+		MapDecorator::display();
+		std::cout << "Decorate BlingBling" << std::endl;
+	}
+};
+
+class MapDecoratorFadeOut : public MapDecorator
+{
+public:
+	virtual void display() override
+	{
+		MapDecorator::display();
+		std::cout << "Decorate FadeOut" << std::endl;
+	}
+};
+
+/*
 class MapProtoType
 {
 public:
 	MapProtoType() {}
 	MapProtoType(std::string _strName)
-	:m_strName(_strName) {}
+	:m_strName(_strName) {}S
 	virtual ~MapProtoType() {}
 	virtual MapProtoType* Clone() const = 0;
 
@@ -159,7 +173,7 @@ MapProtoType* CreateMapProtoType(eMapProtoType _eMapProtoType)
 }
 
 #endif
-/*
+
 class CLoad {
 public:
 	virtual void DrawBasicMap() = 0;
@@ -203,10 +217,10 @@ private:
 class CLoadMapProxy : public CLoad {
 public:
 	CLoadMapProxy() :LoadMap(NULL){}
-	~CLoadMapProxy() 
-	{ 
-		if (LoadMap) 
-			delete LoadMap; 
+	~CLoadMapProxy()
+	{
+		if (LoadMap)
+			delete LoadMap;
 	}
 
 	void DrawBasicMap()
@@ -234,3 +248,4 @@ private:
 };
 */
 
+#endif
