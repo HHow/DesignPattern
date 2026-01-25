@@ -24,7 +24,7 @@ cmake --build . or make
 -----------------------------
 Design pattern remind
 
-1.adaptor pattern
+1.Adaptor pattern
 
 
 <img width="300" alt="스크린샷 2024-03-09 오후 5 24 13" src="https://github.com/HHow/DesignPattern/assets/31755455/d8632c06-b653-4051-8b7f-696803427c61">
@@ -48,4 +48,27 @@ https://refactoring.guru/ko/design-patterns/adapter
 https://refactoring.guru/ko/design-patterns/adapter/cpp/example
 
 https://cinrueom.tistory.com/49
+
+
+2. Composite pattern
+
+트리 구조의 객체들을 관리할 때 용이
+
+<img width="300" alt="스크린샷 2025-11-29 오후 5 10 35" src="https://github.com/user-attachments/assets/4b9db31d-1532-4e43-8fc2-4a9ccd38058b" />
+
+객체들이 어떻게 구성되어 있는지 생각 안해도 됨, 공통 인터페이스로 연쇄작용하며 동작
+
++ 출처
+
+https://refactoring.guru/ko/design-patterns/composite
+
+https://refactoring.guru/ko/design-patterns/composite/cpp/example
+
+
+26.01.25 데코레이터 수정중
+https://refactoring.guru/ko/design-patterns/decorator
+
+
+
+
 
