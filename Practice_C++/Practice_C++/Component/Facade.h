@@ -25,7 +25,7 @@ public:
 	Tribe* GetTribe();
 private:
 	Tribe* MyTribe = NULL;
-	MapConposite* m_pMapComposite;
+	MapConposite* m_pCMapComposite;
 	CActUser* ActingUser = NULL;
 	std::vector<CAbstractExpression*> vtActList;
 };

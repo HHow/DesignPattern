@@ -1,0 +1,8 @@
+{
+  "OutputFoldersPerTargetSystem": {
+    "로컬 컴퓨터": [
+      "Practice_C++\\Practice_C++\\out\\build\\x64-Debug",
+      "Practice_C++\\Practice_C++\\out\\install\\x64-Debug"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+# ninja log v5
+12	439	7916504342277610	build.ninja	8e0a18a37cfa4d1
+59	896	7916504352855962	Factory/CMakeFiles/Factory.dir/src/Factory.cpp.obj	b958054957cbbb33
+144	928	7916504353195959	Component/CMakeFiles/Component.dir/src/User.cpp.obj	393ea49fbbe14970
+36	215	7916543751310000	Factory/Factory.lib	84a807ef51a347f2
+64	772	7916543944776455	Component/CMakeFiles/Component.dir/src/Unit.cpp.obj	ba83cdcf5781ce88
+32	1150	7916546101126661	Component/CMakeFiles/Component.dir/src/Activity.cpp.obj	99955064ca3b2b34
+27	580	7916546412146834	Component/CMakeFiles/Component.dir/src/Map.cpp.obj	56b6f06be3ff5cb2
+52	972	7916568637675401	Component/CMakeFiles/Component.dir/src/Map.cpp.obj	56b6f06be3ff5cb2
+21	1071	7916568638648796	CMakeFiles/main.dir/main.cpp.obj	96dd61e7e02e8121
