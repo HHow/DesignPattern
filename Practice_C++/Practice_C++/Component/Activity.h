@@ -1,11 +1,16 @@
 #ifndef _HEADER_ACTIVITY_H_
 #define _HEADER_ACTIVITY_H_
 
-#include <string>
 #include <iostream>
-//#include <windows.h>
+
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <unistd.h>
+#endif
+
 #include <vector>
+#include <string>
 
 class CFacade;
 

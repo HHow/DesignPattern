@@ -1,0 +1,24 @@
+# Visual Studio 임시 파일 commit 되지 않도록
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+
+# 빌드 결과물 및 로그
+*.exe
+*.pdb
+*.user
+*.aps
+*.ilk
+*.log
+
+# CMake 관련 (사용 중이시라면)
+out/
+build/
+CMakeCache.txt
+CMakeFiles/
+
+# 기타 잡동사니
+*.db
+*.opendb

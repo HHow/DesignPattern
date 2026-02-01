@@ -21,6 +21,9 @@
     <Filter Include="소스 파일\Component\_src">
       <UniqueIdentifier>{528ce06e-2d68-473c-874d-2242a3ce5233}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Type">
+      <UniqueIdentifier>{a19c01fa-14ea-42c1-92a2-4140218f7741}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,13 +44,16 @@
     <ClCompile Include="Component\src\Component.cpp">
       <Filter>소스 파일\Component\_src</Filter>
     </ClCompile>
+    <ClCompile Include="Component\src\Unit.cpp">
+      <Filter>소스 파일\Component\_src</Filter>
+    </ClCompile>
+    <ClCompile Include="Component\src\User.cpp">
+      <Filter>소스 파일\Component\_src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Factory\Factory.h">
       <Filter>소스 파일\Factory</Filter>
-    </ClInclude>
-    <ClInclude Include="Component\Component.h">
-      <Filter>소스 파일\Component</Filter>
     </ClInclude>
     <ClInclude Include="Component\Facade.h">
       <Filter>소스 파일\Component</Filter>
@@ -57,6 +63,15 @@
     </ClInclude>
     <ClInclude Include="Component\Activity.h">
       <Filter>소스 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\Unit.h">
+      <Filter>소스 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Component\User.h">
+      <Filter>소스 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Type\type.h">
+      <Filter>소스 파일\Type</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

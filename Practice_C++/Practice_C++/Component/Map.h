@@ -6,53 +6,61 @@
 #include <list>
 #include "../Type/type.h"
 
-class MapComponent
+class CMapComponent
 {
 public:
-	virtual ~MapComponent() = default;
-	virtual void add(std::unique_ptr<MapComponent> _pMapComponent)
+	virtual ~CMapComponent() = default;
+	virtual void add(std::unique_ptr<CMapComponent> _pCMapComponent)
 	{
-		(void)_pMapComponent;
+		(void)_pCMapComponent;
 	}
-	virtual void remove(MapComponent* _pMapComponent)
+	virtual void remove(CMapComponent* _pCMapComponent)
 	{
-		(void)_pMapComponent;
+		(void)_pCMapComponent;
 	}
 	virtual void display() {}
 };
 
-class MapComposite : public MapComponent
+class CMapComposite : public CMapComponent
 {
 public:
-	virtual ~MapComposite() = default;
-	virtual void add(std::unique_ptr<MapComponent> _pMapComponent) override
+	virtual ~CMapComposite() = default;
+	virtual void add(std::unique_ptr<CMapComponent> _pCMapComponent) override
 	{
-		ltComponent.push_back(std::move(_pMapComponent));
+		ltComponent.push_back(std::move(_pCMapComponent));
 	}
-	virtual void remove(MapComponent* _pMapComponent) override
+	virtual void remove(CMapComponent* _pCMapComponent) override
 	{
-		if (nullptr == _pMapComponent)
+		if (nullptr == _pCMapComponent)
 		{
 			return;
 		}
 
 		for (auto it = ltComponent.begin(); it != ltComponent.end(); ++it)
 		{
-			if (it->get() == _pMapComponent)
+			if (it->get() == _pCMapComponent)
 			{
 				ltComponent.erase(it);
 				return;
 			}
 		}
 	}
+	virtual void display() override
+	{
+		for (auto it = ltComponent.begin(); it != ltComponent.end(); it++)
+		{
+			it->get()->display();
+		}
+	}
+
 private:
-	std::list<std::unique_ptr<MapComponent>> ltComponent;
+	std::list<std::unique_ptr<CMapComponent>> ltComponent;
 };
 
-class MapComponentLand : public MapComponent
+class CMapComponentLand : public CMapComponent
 {
 public:
-	virtual ~MapComponentLand() = default;
+	virtual ~CMapComponentLand() = default;
 	virtual void display() override
 	{
 		std::cout << "draw Land" << std::endl;
@@ -60,48 +68,54 @@ public:
 };
 
 
-class MapComponentWater : public MapComponent
+class CMapComponentWater : public CMapComponent
 {
 public:
-	virtual ~MapComponentWater() = default;
+	virtual ~CMapComponentWater() = default;
 	virtual void display() override
 	{
 		std::cout << "draw Water" << std::endl;
 	}
 };
 
-class MapDecorator : public MapComponent
+class CMapDecorator : public CMapComponent
 {
 public:
-	MapDecorator(std::unique_ptr<MapComponent> _pMapComponent)
-	:pInner(std::move(_pMapComponent))
+	CMapDecorator(std::unique_ptr<CMapComponent> _pCMapComponent)
+		:pInner(std::move(_pCMapComponent))
 	{}
 
 	virtual void display() override
 	{
 		pInner->display();
 	}
-	
+
 private:
-	std::unique_ptr<MapComponent> pInner;
+	std::unique_ptr<CMapComponent> pInner;
 };
 
-class MapDecoratorBlingBling : public MapDecorator
+class CMapDecoratorBlingBling : public CMapDecorator
 {
 public:
+	CMapDecoratorBlingBling(std::unique_ptr<CMapComponent> _pCMapComponent)
+		:CMapDecorator(std::move(_pCMapComponent))
+	{}
 	virtual void display() override
 	{
-		MapDecorator::display();
+		CMapDecorator::display();
 		std::cout << "Decorate BlingBling" << std::endl;
 	}
 };
 
-class MapDecoratorFadeOut : public MapDecorator
+class CMapDecoratorFadeOut : public CMapDecorator
 {
 public:
+	CMapDecoratorFadeOut(std::unique_ptr<CMapComponent> _pCMapComponent)
+		:CMapDecorator(std::move(_pCMapComponent))
+	{}
 	virtual void display() override
 	{
-		MapDecorator::display();
+		CMapDecorator::display();
 		std::cout << "Decorate FadeOut" << std::endl;
 	}
 };

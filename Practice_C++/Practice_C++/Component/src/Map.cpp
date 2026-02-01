@@ -1,5 +1,4 @@
 #include "../Map.h"
-#include "Map.h"
 
 
 /*
@@ -8,3 +7,4 @@ CBurningMap* CBurningMap::MapStateInstance = nullptr;
 CFinalMap* CFinalMap::MapStateInstance = nullptr;
 
 void Map::Component::SetParent(Component * _pComponent)
+*/
