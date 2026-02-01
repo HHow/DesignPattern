@@ -1,17 +1,12 @@
 #ifndef _HEADER_ACTIVITY_H_
 #define _HEADER_ACTIVITY_H_
 
-
-#include <iostream>
-
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
-
-#include <vector>
 #include <string>
+#include <iostream>
+//#include <windows.h>
+#include <unistd.h>
+#include <vector>
+
 class CFacade;
 
 class CActUser

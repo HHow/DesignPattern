@@ -6,19 +6,6 @@
 
 int main(void)
 {
-	std::unique_ptr<CMapComposite> myMap = std::make_unique<CMapComposite>();
-	std::unique_ptr<CMapComponentLand> land = std::make_unique<CMapComponentLand>();
-	std::unique_ptr<CMapDecoratorBlingBling> blingLand = std::make_unique<CMapDecoratorBlingBling>(std::move(land));
-	std::unique_ptr<CMapDecoratorFadeOut> FadeLand = std::make_unique<CMapDecoratorFadeOut>(std::move(blingLand));
-	std::unique_ptr<CMapComponentWater> water = std::make_unique<CMapComponentWater>();
-	std::unique_ptr<CMapDecoratorFadeOut> fadeWater = std::make_unique<CMapDecoratorFadeOut>(std::move(water));
-
-	myMap->add(std::move(FadeLand));
-	myMap->add(std::move(fadeWater));
-
-	myMap->display();
-
-	/*
 	std::cout<<"main"<<std::endl;
 	
 	CMetiator *ChatMetiator = new CChatMetiator();
@@ -83,7 +70,6 @@ int main(void)
 
 	//	threadStatus.join();
 	delete LoadMapProxy;
-	*/
-
+	
 	return 0;
 }
