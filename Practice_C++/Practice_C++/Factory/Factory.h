@@ -4,55 +4,22 @@
 #include <vector>
 #include "../Type/type.h"
 
-class Unit;
-
-class Tribe
+template<class T>
+class Factory
 {
 public:
-	Tribe() {};
-	virtual ~Tribe() {};
+	Factory() {};
+	virtual ~Factory() {};
 
-	virtual void MakeUnit(const eUnitType _eUnitType) = 0;
+	void Set(T* _T)
+	{
+		if (nullptr != _T)
+		{
+			m_vtData.push_back(_T);
+		}
+	}
 
-protected:
-	void SetUnit(Unit* _Unit);
-
-private:
-	std::vector<Unit*> m_vtUnit;
-};
-
-class Terran : public Tribe
-{
-public:
-	Terran();
-	virtual ~Terran();
-
-	virtual void MakeUnit(const eUnitType _eUnitType) override;
-};
-
-class Protoss : public Tribe
-{
-public:
-	Protoss();
-	virtual ~Protoss();
-	
-	virtual void MakeUnit(const eUnitType _eUnitType) override;
-};
-
-class Zerg : public Tribe
-{
-public:
-	Zerg();
-	virtual ~Zerg();
-	
-	virtual void MakeUnit(const eUnitType _eUnitType) override;
-};
-
-// 팩토리 패턴
-class TribeCreator
-{
-public:
-	static Tribe* MakeTribe(const eTribeType _eTribeType);
+	std::vector<T*> m_vtData;
 };
 
 #endif

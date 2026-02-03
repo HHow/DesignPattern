@@ -126,12 +126,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Component\src\Activity.cpp" />
-    <ClCompile Include="Component\src\Component.cpp" />
     <ClCompile Include="Component\src\Facade.cpp" />
     <ClCompile Include="Component\src\Map.cpp" />
     <ClCompile Include="Component\src\Unit.cpp" />
     <ClCompile Include="Component\src\User.cpp" />
     <ClCompile Include="Factory\src\Factory.cpp" />
+    <ClCompile Include="Factory\src\FactoryUnit.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +141,7 @@
     <ClInclude Include="Component\Unit.h" />
     <ClInclude Include="Component\User.h" />
     <ClInclude Include="Factory\Factory.h" />
+    <ClInclude Include="Factory\FactoryUnit.h" />
     <ClInclude Include="Type\type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

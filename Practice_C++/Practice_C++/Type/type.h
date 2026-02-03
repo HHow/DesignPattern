@@ -30,9 +30,11 @@ enum eUnitType
 
 enum eMapState
 {
+	eMapState_None = 0,
 	eMapState_Rest,
 	eMapState_Burning,
-	eMapState_Final
+	eMapState_Final,
+	eMapState_Max
 };
 
 enum eMapProtoType

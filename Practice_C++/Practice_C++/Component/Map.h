@@ -121,6 +121,82 @@ public:
 };
 
 /*
+26.02.04 proxy 할차례
+class CLoad {
+public:
+	virtual void DrawBasicMap() = 0;
+};
+
+class CLoadMap : public CLoad {
+public:
+	CLoadMap()
+	{
+		MapState = CRestMap::GetMapStateInstance();
+	}
+	void DrawBasicMap()
+	{
+		std::cout << "Load map start" << std::endl;
+	}
+
+	void SetMapState(eMapState _eMapState)
+	{
+		switch (_eMapState)
+		{
+		case eMapState_Rest:
+			MapState = CRestMap::GetMapStateInstance();
+		case eMapState_Burning:
+			MapState = CBurningMap::GetMapStateInstance();
+		case eMapState_Final:
+			MapState = CFinalMap::GetMapStateInstance();
+		default:
+			break;
+		}
+	}
+
+	void UpdateMap()
+	{
+		MapState->UpdateMap();
+	}
+
+private:
+	CMapState* MapState;
+};
+
+class CLoadMapProxy : public CLoad {
+public:
+	CLoadMapProxy() :LoadMap(NULL) {}
+	~CLoadMapProxy()
+	{
+		if (LoadMap)
+			delete LoadMap;
+	}
+
+	void DrawBasicMap()
+	{
+		if (!LoadMap)
+		{
+			LoadMap = new CLoadMap;
+			std::cout << "Load map~" << std::endl;
+		}
+		LoadMap->DrawBasicMap();
+	}
+
+	void DrawPlayMap()
+	{
+		LoadMap->UpdateMap();
+	}
+
+	void SetMapState(eMapState _eMapState)
+	{
+		LoadMap->SetMapState(_eMapState);
+	}
+
+private:
+	CLoadMap* LoadMap;
+};
+*/
+
+/*
 class MapProtoType
 {
 public:
@@ -188,78 +264,7 @@ MapProtoType* CreateMapProtoType(eMapProtoType _eMapProtoType)
 
 #endif
 
-class CLoad {
-public:
-	virtual void DrawBasicMap() = 0;
-};
 
-class CLoadMap : public CLoad {
-public:
-	CLoadMap()
-	{
-		MapState = CRestMap::GetMapStateInstance();
-	}
-	void DrawBasicMap()
-	{
-		std::cout << "Load map start" << std::endl;
-	}
-
-	void SetMapState(eMapState _eMapState)
-	{
-		switch (_eMapState)
-		{
-		case eMapState_Rest:
-			MapState = CRestMap::GetMapStateInstance();
-		case eMapState_Burning:
-			MapState = CBurningMap::GetMapStateInstance();
-		case eMapState_Final:
-			MapState = CFinalMap::GetMapStateInstance();
-		default:
-			break;
-		}
-	}
-
-	void UpdateMap()
-	{
-		MapState->UpdateMap();
-	}
-
-private:
-	CMapState* MapState;
-};
-
-class CLoadMapProxy : public CLoad {
-public:
-	CLoadMapProxy() :LoadMap(NULL){}
-	~CLoadMapProxy()
-	{
-		if (LoadMap)
-			delete LoadMap;
-	}
-
-	void DrawBasicMap()
-	{
-		if (!LoadMap)
-		{
-			LoadMap = new CLoadMap;
-			std::cout << "Load map~" << std::endl;
-		}
-		LoadMap->DrawBasicMap();
-	}
-
-	void DrawPlayMap()
-	{
-		LoadMap->UpdateMap();
-	}
-
-	void SetMapState(eMapState _eMapState)
-	{
-		LoadMap->SetMapState(_eMapState);
-	}
-
-private:
-	CLoadMap* LoadMap;
-};
 */
 
 #endif

@@ -41,14 +41,14 @@
     <ClCompile Include="Component\src\Activity.cpp">
       <Filter>소스 파일\Component\_src</Filter>
     </ClCompile>
-    <ClCompile Include="Component\src\Component.cpp">
-      <Filter>소스 파일\Component\_src</Filter>
-    </ClCompile>
     <ClCompile Include="Component\src\Unit.cpp">
       <Filter>소스 파일\Component\_src</Filter>
     </ClCompile>
     <ClCompile Include="Component\src\User.cpp">
       <Filter>소스 파일\Component\_src</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory\src\FactoryUnit.cpp">
+      <Filter>소스 파일\Factory\_src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +72,9 @@
     </ClInclude>
     <ClInclude Include="Type\type.h">
       <Filter>소스 파일\Type</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\FactoryUnit.h">
+      <Filter>소스 파일\Factory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
