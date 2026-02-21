@@ -2,21 +2,25 @@
 #include <string>
 #include <thread>
 #include "Factory/Factory.h"
-#include "Component/Map.h"
+#include "Component/MapProxy.h"
 
 int main(void)
 {
+	CLoadMapProxy* LoadMapProxy = new CLoadMapProxy();
+
+	// mapcomponent 담을 변수
 	std::unique_ptr<CMapComposite> myMap = std::make_unique<CMapComposite>();
-	std::unique_ptr<CMapComponentLand> land = std::make_unique<CMapComponentLand>();
-	std::unique_ptr<CMapDecoratorBlingBling> blingLand = std::make_unique<CMapDecoratorBlingBling>(std::move(land));
-	std::unique_ptr<CMapDecoratorFadeOut> FadeLand = std::make_unique<CMapDecoratorFadeOut>(std::move(blingLand));
-	std::unique_ptr<CMapComponentWater> water = std::make_unique<CMapComponentWater>();
-	std::unique_ptr<CMapDecoratorFadeOut> fadeWater = std::make_unique<CMapDecoratorFadeOut>(std::move(water));
 
-	myMap->add(std::move(FadeLand));
-	myMap->add(std::move(fadeWater));
+	std::unique_ptr<CMapComponentLand> Land = std::make_unique<CMapComponentLand>();
+	std::unique_ptr<CMapComponentWater> Water = std::make_unique<CMapComponentWater>();
+	
+	std::unique_ptr<CMapDecoratorFadeOut> FadeLand = std::make_unique<CMapDecoratorFadeOut>(std::move(Land));
+	std::unique_ptr<CMapDecoratorFadeOut> fadeWater = std::make_unique<CMapDecoratorFadeOut>(std::move(Water));
 
-	myMap->display();
+	LoadMapProxy->AddMapComponent(std::move(FadeLand));
+	LoadMapProxy->AddMapComponent(std::move(fadeWater));
+	
+	LoadMapProxy->DisplayMap();
 
 	/*
 	std::cout<<"main"<<std::endl;

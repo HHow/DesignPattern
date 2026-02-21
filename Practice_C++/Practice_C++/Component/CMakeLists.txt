@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 
 # C++ 표준 설정
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-message("CMAKE in Component c++ 17")
+message("CMAKE in Component c++ 14")
 
 set (SOURCES
      ./src/Activity.cpp

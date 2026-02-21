@@ -12,7 +12,7 @@
             ],
             "compilerPath": "/Library/Developer/CommandLineTools/usr/bin/gcc",
             "cStandard": "c11",
-            "cppStandard": "c++11",
+            "cppStandard": "c++14",
             "intelliSenseMode": "macos-clang-arm64"
         }
     ],

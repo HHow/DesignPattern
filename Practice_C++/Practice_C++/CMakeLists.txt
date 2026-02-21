@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 
 # C++ 표준 설정
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-message("c++ stl 17")
+message("c++ stl 14")
 
 project(Practice_C++ VERSION 1.0.0 LANGUAGES C CXX)
 

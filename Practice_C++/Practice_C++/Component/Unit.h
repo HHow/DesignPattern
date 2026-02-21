@@ -44,19 +44,16 @@ public:
 class InfestTerranUnit : public TerranUnit
 {
 public:
-	InfestTerranUnit(const std::string &_strUnitName, InfestAdaptee* _pInfestAdaptee = nullptr)
-	:TerranUnit(_strUnitName), m_pInfestAdaptee(_pInfestAdaptee)
+	InfestTerranUnit(const std::string &_strUnitName, std::unique_ptr<InfestAdaptee> _pInfestAdaptee)
+	:TerranUnit(_strUnitName), m_pInfestAdaptee(std::move(_pInfestAdaptee))
 	{
 	}
-	~InfestTerranUnit()
-	{
-		delete m_pInfestAdaptee;
-	}
+	~InfestTerranUnit() = default;
 
 	virtual void GenerateBody() override;
 
 private:
-	InfestAdaptee* m_pInfestAdaptee;
+	std::unique_ptr<InfestAdaptee> m_pInfestAdaptee;
 };
 
 class ProtossUnit : public Unit
