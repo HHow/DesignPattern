@@ -1,53 +1,21 @@
-#ifndef _HEADER_ACTIVITY_H_
-#define _HEADER_ACTIVITY_H_
+#ifndef _HEADER_CHATMANAGER_H_
+#define _HEADER_CHATMANAGER_H_
 
 #include <iostream>
 
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <unistd.h>
-#endif
-
-#include <vector>
-#include <string>
-
-class CFacade;
-
-class CActUser
-{
-public:
-	CActUser(std::string _stUserName) : stUserName(_stUserName)
-	{
-		KillUserCount = 0;
-		stTitle = std::string();
-	}
-
-	std::string GetUserName();
-	void ReceiveMessage(std::string _message);
-	void PlusKillCount();
-	void Update();
-
-private:
-	std::string stUserName;
-	std::string stTitle;
-	int KillUserCount;
-
-};
-
-class CAbstractExpression
+class CCheckChatMessage
 {
 public:
 	virtual bool CheckWord(std::string _strInputWord) = 0;
 };
 
-class CSwearExpression : public CAbstractExpression
+class CCheckChatMessageSwear : public CCheckChatMessage
 {
 public:
 	virtual bool CheckWord(std::string _strInputWord);
 };
 
-class CPrivacyExpression : public CAbstractExpression
+class CCheckChatMessagePrivacy : public CCheckChatMessage
 {
 public:
 	virtual bool CheckWord(std::string _strInputWord);

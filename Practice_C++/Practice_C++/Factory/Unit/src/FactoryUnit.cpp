@@ -1,6 +1,5 @@
 #include "../FactoryUnit.h"
-#include "../../Component/Unit.h"
-
+#include "Component/Unit/Unit.h"
 
 void TerranUnitFactory::MakeUnit(const eUnitType _eUnitType)
 {

@@ -1,31 +1,6 @@
-#include "../Activity.h"
-#include "../Facade.h"
+#include "../ChatManager.h"
 
-std::string CActUser::GetUserName()
-{
-	return stUserName;
-}
-
-void CActUser::ReceiveMessage(std::string _message)
-{
-	std::cout << _message << std::endl;
-}
-
-void CActUser::PlusKillCount()
-{
-	KillUserCount++;
-}
-
-void CActUser::Update()
-{
-	if (KillUserCount >= 5 && KillUserCount < 10)
-		stTitle = "kill 5 ~ 10";
-	else if (KillUserCount >= 10)
-		stTitle = "kill over 10";
-}
-
-
-bool CSwearExpression::CheckWord(std::string _strInputWord)
+bool CCheckChatMessageSwear::CheckWord(std::string _strInputWord)
 {
 	if (_strInputWord.find("die") >= 0)
 		std::cout << "dont chat swear" << std::endl;
@@ -39,7 +14,7 @@ bool CSwearExpression::CheckWord(std::string _strInputWord)
 }
 
 
-bool CPrivacyExpression::CheckWord(std::string _strInputWord)
+bool CCheckChatMessagePrivacy::CheckWord(std::string _strInputWord)
 {
 	if (_strInputWord.find("name") >= 0)
 		std::cout << "dont chat privacy info" << std::endl;
